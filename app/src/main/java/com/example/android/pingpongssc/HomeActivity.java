@@ -79,6 +79,27 @@ public class HomeActivity extends AppCompatActivity {
              * What should i do to keep score tracking then set 2nd and 3rd match to select statment !!!
              */
         }
+        else {
+            if (leftTeamScore == 3 || leftFirst.isChecked()){
+                //make 2nd match checkbox checked and then reset
+                leftSecond.setChecked(!leftSecond.isChecked());
+                leftTeamScore = 0;
+                rightTeamScore = 0;
+                displayForLeft(leftTeamScore);
+                displayForRight(rightTeamScore);
+            }
+            else {
+                if (leftTeamScore == 3 || leftFirst.isChecked() || leftSecond.isChecked()){
+                    //make 3rd match checkbox checked and then reset
+                    leftThird.setChecked(!leftThird.isChecked());
+                    leftTeamScore = 0;
+                    rightTeamScore = 0;
+                    displayForLeft(leftTeamScore);
+                    displayForRight(rightTeamScore);
+                }
+            }
+        }
+
 
     }
 
