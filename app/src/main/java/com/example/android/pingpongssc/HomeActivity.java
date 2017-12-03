@@ -7,8 +7,6 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.android.pingpongssc.R;
-
 public class HomeActivity extends AppCompatActivity {
 
 
@@ -18,7 +16,6 @@ public class HomeActivity extends AppCompatActivity {
     CheckBox leftFirst;
     CheckBox leftSecond;
     CheckBox leftThird;
-
     CheckBox rightFirst;
     CheckBox rightSecond;
     CheckBox rightThird;
@@ -28,16 +25,12 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         /**
          * To import data from the 2 EditText in the activity_teams_names
          */
-
         TextView rightTeamName = findViewById(R.id.rightTeamName);
         TextView leftTeamName = findViewById(R.id.leftTeamName);
-
         Bundle bundle = getIntent().getExtras();
-
         if (bundle != null) {
 
             String rightTeam = bundle.getString("RIGHT");
@@ -46,71 +39,39 @@ public class HomeActivity extends AppCompatActivity {
             rightTeamName.setText(rightTeam);
             leftTeamName.setText(leftTeam);
         }
-
-
-        leftFirst = (CheckBox) findViewById(R.id.leftTeamMOne);
-        leftSecond = (CheckBox) findViewById(R.id.leftTeamMTwo);
-        leftThird = (CheckBox) findViewById(R.id.leftTeamMThree);
-
-        rightFirst = (CheckBox) findViewById(R.id.rightTeamMOne);
-        rightSecond = (CheckBox) findViewById(R.id.rightTeamMTwo);
-        rightThird = (CheckBox) findViewById(R.id.rightTeamMThree);
-
+        leftFirst = findViewById(R.id.leftTeamMOne);
+        leftSecond = findViewById(R.id.leftTeamMTwo);
+        leftThird = findViewById(R.id.leftTeamMThree);
+        rightFirst = findViewById(R.id.rightTeamMOne);
+        rightSecond = findViewById(R.id.rightTeamMTwo);
+        rightThird = findViewById(R.id.rightTeamMThree);
     }
-
-
-
     /**
      * When the + for left team points is clicked
      */
     public void incLeftOne(View view) {
+
         leftTeamScore = leftTeamScore + 1;
         displayForLeft(leftTeamScore);
-        if (leftTeamScore == 3) {
 
-            //make 1st Match checkbox selected and reset
-            leftFirst.setChecked(!leftFirst.isChecked());
+        if (leftTeamScore == 3) {
             leftTeamScore = 0;
             rightTeamScore = 0;
             displayForLeft(leftTeamScore);
             displayForRight(rightTeamScore);
-
-            /**
-             * What should i do to keep score tracking then set 2nd and 3rd match to select statment !!!
-             */
+            //make 1st Match left checkbox ischecked
+            leftFirst.setChecked(!leftFirst.isChecked());
+        } else if (leftFirst.isChecked() || leftTeamScore == 3) {
+            leftTeamScore = 0;
+            rightTeamScore = 0;
+            displayForLeft(leftTeamScore);
+            displayForRight(rightTeamScore);
+            //make 1st Match left checkbox ischecked
+            leftFirst.setChecked(!leftFirst.isChecked());
+            //make 1st Match left checkbox ischecked
+            leftSecond.setChecked(!leftSecond.isChecked());
         }
-        else {
-            if (leftTeamScore == 3 || leftFirst.isChecked()){
-                //make 2nd match checkbox checked and then reset
-                leftSecond.setChecked(!leftSecond.isChecked());
-                leftTeamScore = 0;
-                rightTeamScore = 0;
-                displayForLeft(leftTeamScore);
-                displayForRight(rightTeamScore);
-            }
-            else {
-                if (leftTeamScore == 3 || leftFirst.isChecked() || leftSecond.isChecked()){
-                    //make 3rd match checkbox checked and then reset
-                    leftThird.setChecked(!leftThird.isChecked());
-                    leftTeamScore = 0;
-                    rightTeamScore = 0;
-                    displayForLeft(leftTeamScore);
-                    displayForRight(rightTeamScore);
-                }
-            }
-        }
-
-
     }
-
-    /**
-     * When the 2 points clicked
-     */
-    /*public void twoPoints(View view) {
-        teamAScore = teamAScore + 2;
-        displayForLeft(teamAScore);
-    }
-
     /**
      * When the -1 for left player/team score is clicked
      */
