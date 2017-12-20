@@ -2,10 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient"
     android:gravity="center_vertical"
     android:orientation="vertical"
-    android:background="@drawable/gradient"
-    tools:context=".MainActivity">
+    tools:context=".WelcomeSplashActivity">
 
     <ImageView
         android:layout_width="match_parent"
@@ -15,18 +15,18 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="#MadeWithUdacity \n #GoogleUdacityScholars"
         android:layout_margin="16dp"
-        android:gravity="center"
         android:fontFamily="sans-serif-condensed"
+        android:gravity="center"
+        android:text="#MadeWithUdacity \n #GoogleUdacityScholars"
         android:textSize="24sp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="November2017\nWISEMO"
         android:gravity="center"
-        android:textSize="15sp"
-        android:textColor="#000000"/>
+        android:text="November2017\nWISEMO"
+        android:textColor="#000000"
+        android:textSize="15sp" />
 
 </LinearLayout>

@@ -1,266 +1,194 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_relative_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient"
     android:gravity="center_vertical"
-    tools:context=".MainActivity">
-
+    tools:context=".WelcomeSplashActivity">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient"
         android:baselineAligned="false">
-
+        <!-- Start Left Vertical linear -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="16dp"
             android:layout_weight="1"
+            android:gravity="center"
             android:orientation="vertical">
-
+            <!-- Left Name -->
             <TextView
-                android:id="@+id/leftTeamName"
-                android:layout_width="wrap_content"
+                android:id="@+id/left_team_name"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:background="@drawable/dark_round_bg"
                 android:ellipsize="marquee"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:fontFamily="sans-serif-condensed"
+                android:gravity="center"
                 android:marqueeRepeatLimit="marquee_forever"
                 android:scrollHorizontally="true"
                 android:singleLine="true"
                 android:text="@string/Left_Team"
                 android:textAllCaps="true"
                 android:textColor="#ffffff"
-                android:textSize="30sp"
+                android:textSize="40sp"
                 android:textStyle="bold"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/match_score"
-                android:textColor="#141D37"
-                android:textSize="16sp" />
-
+            <!-- Left Score -->
             <TextView
                 android:id="@+id/left_score"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="135dp"
                 android:layout_gravity="center"
+                android:layout_marginBottom="50dp"
                 android:fontFamily="serif"
+                android:gravity="center"
                 android:text="@string/zero"
                 android:textColor="#ffffff"
-                android:textSize="110sp"
+                android:textSize="120sp"
                 android:textStyle="bold" />
-
-            <Button
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/btn_press"
-                android:onClick="incLeftOne"
-                android:text="@string/increment"
-                android:textSize="34sp" />
-
-            <Button
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/btn_press"
-                android:onClick="decLeftOne"
-                android:text="@string/decrement"
-                android:textColor="#ffffff"
-                android:textSize="54sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/Matches_Won"
-                android:textColor="#141D37"
-                android:textSize="14sp" />
-
+            <!-- Start Left Score Buttons -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/dark_round_bg"
+                android:orientation="vertical">
+                <!-- Left Increment Button -->
+                <ImageButton
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/inc_layer_list"
+                    android:contentDescription="@string/increment"
+                    android:onClick="incLeftOne" />
+                <!-- Left Decrement Button -->
+                <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                 android:layout_gravity="center"
-                android:orientation="horizontal">
-
-                <CheckBox
-                    android:id="@+id/leftTeamMOne"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginRight="15dp"
-                    android:background="@drawable/check_bg"
-                    android:button="@drawable/btn_check"
-                    android:text="@string/First"
-                    android:textColor="#ffffff" />
-
-                <CheckBox
-                    android:id="@+id/leftTeamMTwo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/check_bg"
-                    android:button="@drawable/btn_check"
-                    android:text="@string/Second"
-                    android:textColor="#ffffff" />
-
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/dec_layer_list"
+                    android:contentDescription="@string/decrement"
+                    android:onClick="decLeftOne" />
+                <!-- End Left Score Buttons -->
             </LinearLayout>
-
-            <CheckBox
-                android:id="@+id/leftTeamMThree"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/check_bg"
-                android:button="@drawable/btn_check"
-                android:text="@string/Third"
-                android:textColor="#ffffff" />
-
+            <!-- End Left Vertical linear -->
         </LinearLayout>
-
+        <!-- Start Right Vertical Linear -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="16dp"
             android:layout_weight="1"
+            android:gravity="center"
             android:orientation="vertical">
-
+            <!-- Right Name -->
             <TextView
-                android:id="@+id/rightTeamName"
-                android:layout_width="wrap_content"
+                android:id="@+id/right_team_name"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:background="@drawable/dark_round_bg"
                 android:ellipsize="marquee"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:fontFamily="sans-serif-condensed"
+                android:gravity="center"
                 android:marqueeRepeatLimit="marquee_forever"
                 android:scrollHorizontally="true"
                 android:singleLine="true"
                 android:text="@string/Right_Team"
                 android:textAllCaps="true"
                 android:textColor="#ffffff"
-                android:textSize="30sp"
+                android:textSize="40sp"
                 android:textStyle="bold"/>
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/match_score"
-                android:textColor="#141D37"
-                android:textSize="16sp" />
-
+            <!-- Right Score -->
             <TextView
                 android:id="@+id/right_score"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="135dp"
                 android:layout_gravity="center"
+                android:layout_marginBottom="50dp"
                 android:fontFamily="serif"
+                android:gravity="center"
                 android:text="@string/zero"
                 android:textColor="#ffffff"
-                android:textSize="110sp"
+                android:textSize="120sp"
                 android:textStyle="bold" />
-
-            <Button
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/btn_press"
-                android:onClick="incRightOne"
-                android:text="@string/increment"
-                android:textColor="#ffffff"
-                android:textSize="34sp" />
-
-
-            <Button
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/btn_press"
-                android:onClick="decRightOne"
-                android:text="@string/decrement"
-                android:textColor="#ffffff"
-                android:textSize="54sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/Matches_Won"
-                android:textColor="#141D37"
-                android:textSize="14sp" />
-
+            <!-- Start Right Score Buttons -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/dark_round_bg"
+                android:orientation="vertical">
+                <!-- Right Increment Button -->
+                <ImageButton
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/inc_layer_list"
+                    android:contentDescription="@string/increment"
+                    android:onClick="incRightOne" />
+                <!-- Right Decrement Button -->
+                <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                 android:layout_gravity="center"
-                android:orientation="horizontal">
-
-                <CheckBox
-                    android:id="@+id/rightTeamMOne"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginRight="15dp"
-                    android:background="@drawable/check_bg"
-                    android:button="@drawable/btn_check"
-                    android:text="@string/First"
-                    android:textColor="#ffffff" />
-
-                <CheckBox
-                    android:id="@+id/rightTeamMTwo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/check_bg"
-                    android:button="@drawable/btn_check"
-                    android:text="@string/Second"
-                    android:textColor="#ffffff" />
-
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/dec_layer_list"
+                    android:contentDescription="@string/decrement"
+                    android:onClick="decRightOne" />
+                <!-- End Right Score Buttons -->
             </LinearLayout>
-
-            <CheckBox
-                android:id="@+id/rightTeamMThree"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/check_bg"
-                android:button="@drawable/btn_check"
-                android:text="@string/Third"
-                android:textColor="#ffffff" />
-
+            <!-- End Right Vertical linear -->
         </LinearLayout>
     </LinearLayout>
-
+    <!-- Center Lines / Table Net -->
     <View
-        android:layout_width="3dp"
+        android:layout_width="2dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:background="#ffffff" />
+        android:background="@color/White" />
 
-    <Button
-        android:layout_width="30dp"
-        android:layout_height="80dp"
-        android:layout_alignParentBottom="true"
+    <!-- Reset Button -->
+    <ImageButton
+        android:id="@+id/reset"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40dp"
-        android:background="@drawable/btn_press2"
-        android:onClick="reset"
-        android:text="@string/reset"
-        android:textColor="#ffffff" />
-
+        android:layout_centerInParent="true"
+        android:background="@drawable/reset_layer_list"
+        android:contentDescription="@string/reset"
+        android:onClick="reset" />
+    <!-- Standing Button -->
+    <Button
+        android:id="@+id/standingsBtn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/reset"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/standings_list"
+        android:textStyle="bold" />
+    <!-- Swap Button -->
+    <Button
+        android:id="@+id/swapBtn"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/reset"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/swap_h_layer_list" />
 </RelativeLayout>

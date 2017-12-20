@@ -1,17 +1,28 @@
 <resources>
     <string name="app_name">Ping Pong SSC</string>
-    <string name="reset">R</string>
+    <string name="reset">Reset Scores</string>
     <string name="Matches_Won">Matches Won</string>
     <string name="decrement">-</string>
     <string name="increment">+</string>
     <string name="zero">0</string>
     <string name="match_score">Match Score</string>
     <string name="match_won2">Matches\nWon</string>
-    <string name="Right_Team">Right Team</string>
-    <string name="Left_Team">Left Team</string>
+    <string name="Right_Team">Right</string>
+    <string name="Left_Team">Left</string>
     <string name="Enter_names_then_start">Enter names then start</string>
-    <string name="WISEMO">WISEMO\n#MadeWithUdacity\n2017</string>
+    <string name="WISEMO">WISEMO #MadeWithUdacity 2017</string>
     <string name="Right_name">Right Player/Team</string>
     <string name="Left_name">Left Player/Team</string>
     <string name="Start">Start</string>
+    <string name="First">\u00201st</string>
+    <string name="Second">\u00202nd</string>
+    <string name="Third">\u00203rd</string>
+    <string name="Now_serve">Now Serve</string>
+    <string name="Standings">Standings</string>
+    <string name="Swap">Swap</string>
+    <string name="App_logo">App logo</string>
+    <string name="fifteenAll">15 | 15</string>
+    <string name="seventeenAll">17 | 17</string>
+    <string name="ZeroAll">0   |   0</string>
+    <string name="RECENT_SCORES">recent scores</string>
 </resources>

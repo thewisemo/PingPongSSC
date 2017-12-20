@@ -3,88 +3,84 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
-    android:orientation="horizontal"
+    android:baselineAligned="false"
     android:gravity="center_vertical"
-    tools:context=".MainActivity">
-
+    android:orientation="horizontal"
+    tools:context=".WelcomeSplashActivity">
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
         android:layout_weight="1"
         android:gravity="center"
-        android:layout_gravity="center_vertical"
         android:orientation="vertical">
-
         <ImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
+            android:contentDescription="@string/App_logo"
             android:src="@drawable/ppssc_logo" />
 
-    <TextView
-        android:id="@+id/hashLink"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/WISEMO"
-        android:textColor="#ffffff"
-        android:layout_margin="16dp"/>
-
+        <TextView
+            android:id="@+id/hashLink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:gravity="center"
+            android:text="@string/WISEMO"
+            android:textColor="#ffffff" />
     </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="16dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
+            android:gravity="center"
+            android:text="@string/Enter_names_then_start"
+            android:textAllCaps="true"
+            android:textColor="#ffffff"
+            android:textSize="21sp" />
+
+        <EditText
+            android:id="@+id/right_team_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:layout_gravity="center_vertical"
-            android:gravity="center">
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:hint="@string/Right_name"
+            android:inputType="textPersonName|textCapWords"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:maxLines="1"
+            android:singleLine="true" />
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/Enter_names_then_start"
-                android:textAllCaps="true"
-                android:textColor="#ffffff"
-                android:textSize="21sp" />
+        <EditText
+            android:id="@+id/left_team_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:hint="@string/Left_name"
+            android:inputType="textPersonName|textCapWords"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:maxLines="1"
+            android:singleLine="true" />
 
-            <EditText
-                android:id="@+id/rightTeamName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:hint="@string/Right_name"
-                android:marqueeRepeatLimit="marquee_forever"
-                android:maxLines="1"
-                android:scrollHorizontally="true"
-                android:singleLine="true"/>
-
-
-            <EditText
-                android:id="@+id/leftTeamName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:hint="@string/Left_name"
-                android:marqueeRepeatLimit="marquee_forever"
-                android:maxLines="1"
-                android:scrollHorizontally="true"
-                android:singleLine="true" />
-
-            <Button
-                android:id="@+id/startBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:singleLine="true"
-                android:text="@string/Start" />
-
-        </LinearLayout>
-
+        <Button
+            android:id="@+id/startBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:singleLine="true"
+            android:text="@string/Start" />
+    </LinearLayout>
 </LinearLayout>

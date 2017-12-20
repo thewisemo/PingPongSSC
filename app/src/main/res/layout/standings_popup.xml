@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/reset_popup_elements"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/white_round_bg"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/standings_head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/White"
+        android:gravity="center"
+        android:padding="5dp"
+        android:paddingEnd="30dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:paddingStart="30dp"
+        android:text="@string/Standings"
+        android:textColor="@color/Red"
+        android:textSize="35sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/DrakBlue"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/RECENT_SCORES"
+        android:textAllCaps="true"
+        android:textColor="@color/White"
+        android:textStyle="bold" />
+    <!-- Start Horizontal names -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/Red"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <!-- Left Name -->
+        <TextView
+            android:id="@+id/stand_left_team_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:background="@color/Red"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="center"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="@string/Left_Team"
+            android:textAllCaps="true"
+            android:textColor="#ffffff"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+        <!-- Right Name -->
+        <TextView
+            android:id="@+id/stand_right_team_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_weight="1"
+            android:background="@color/Red"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="center"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="@string/Right_Team"
+            android:textAllCaps="true"
+            android:textColor="#ffffff"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+        <!-- End Horizontal names -->
+    </LinearLayout>
+    <!-- Start matches Horizontal -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:baselineAligned="false"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <!-- Start Left matches -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <!-- 1st Left Match Score -->
+            <TextView
+                android:id="@+id/left_first_match_score"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/dark_small_round_bg"
+                android:gravity="center"
+                android:text="@string/zero"
+                android:textColor="@color/White"
+                android:textSize="35sp"
+                android:textStyle="bold" />
+            <!-- 2nd Left Match Score -->
+            <TextView
+                android:id="@+id/leftSecondMatchScore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/dark_small_round_bg"
+                android:gravity="center"
+                android:text="@string/zero"
+                android:textColor="@color/White"
+                android:textSize="35sp"
+                android:textStyle="bold" />
+            <!-- 3rd Left Match Score -->
+            <TextView
+                android:id="@+id/leftThirdMatchScore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/dark_small_round_bg"
+                android:gravity="center"
+                android:text="@string/zero"
+                android:textColor="@color/White"
+                android:textSize="35sp"
+                android:textStyle="bold" />
+            <!-- End left matches -->
+        </LinearLayout>
+        <!-- Start Right matches -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <!-- 1st Right Match Score -->
+            <TextView
+                android:id="@+id/rightFirstMatchScore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/dark_small_round_bg"
+                android:gravity="center"
+                android:text="@string/zero"
+                android:textColor="@color/White"
+                android:textSize="35sp"
+                android:textStyle="bold" />
+            <!-- 2nd Right Match Score -->
+            <TextView
+                android:id="@+id/rightSecondMatchScore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/dark_small_round_bg"
+                android:gravity="center"
+                android:text="@string/zero"
+                android:textColor="@color/White"
+                android:textSize="35sp"
+                android:textStyle="bold" />
+            <!-- 3rd Right Match Score -->
+            <TextView
+                android:id="@+id/rightThirdMatchScore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/dark_small_round_bg"
+                android:gravity="center"
+                android:text="@string/zero"
+                android:textColor="@color/White"
+                android:textSize="35sp"
+                android:textStyle="bold" />
+            <!-- End right matches -->
+        </LinearLayout>
+        <!-- End matches Horizontal -->
+    </LinearLayout>
+
+</LinearLayout>

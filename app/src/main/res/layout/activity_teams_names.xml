@@ -6,11 +6,12 @@
     android:gravity="center_vertical"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".MainActivity">
+    tools:context=".WelcomeSplashActivity">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="150dp"
+        android:contentDescription="@string/App_logo"
         android:src="@drawable/ppssc_logo"/>
 
     <TextView
@@ -19,52 +20,56 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:gravity="center"
-        android:text="Enter names then start"
+        android:text="@string/Enter_names_then_start"
         android:textAllCaps="true"
-        android:textColor="#ffffff"
-        android:textSize="21sp" />
+        android:textColor="@color/White"
+        android:textSize="24sp" />
 
     <EditText
-        android:id="@+id/rightTeamName"
+        android:id="@+id/right_team_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:hint="Right Player/Team"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:marqueeRepeatLimit ="marquee_forever"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        android:scrollHorizontally="true"/>
+        android:hint="@string/Right_name"
+        android:inputType="textPersonName"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:maxLines="1"
+        android:singleLine="true" />
 
 
     <EditText
-        android:id="@+id/leftTeamName"
+        android:id="@+id/left_team_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:hint="Left Player/Team"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:marqueeRepeatLimit ="marquee_forever"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        android:scrollHorizontally="true"/>
+        android:hint="@string/Left_name"
+        android:inputType="textPersonName"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:maxLines="1"
+        android:singleLine="true" />
 
     <Button
         android:id="@+id/startBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="Start"
-        android:singleLine="true"/>
+        android:background="@drawable/red_round_bg"
+        android:singleLine="true"
+        android:text="@string/Start"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/hashLink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/hashLink"
-        android:text="WISEMO #MadeWithUdacity"
-        android:textColor="#000000"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/WISEMO"
+        android:textColor="#000000" />
 
 </LinearLayout>

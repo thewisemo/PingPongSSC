@@ -6,4 +6,9 @@
         <!-- Background color of buttons in the app -->
         <item name="colorButtonNormal">#E5394A</item>
     </style>
+    <!-- Standing popup window style -->
+    <style name="StandCustom" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+    </style>
 </resources>

@@ -18,48 +18,34 @@
 
     <!-- Enabled states -->
 
-    <item android:state_checked="true" android:state_window_focused="false"
-        android:state_enabled="true"
-        android:drawable="@drawable/orange_circle" />
-    <item android:state_checked="false" android:state_window_focused="false"
-        android:state_enabled="true"
-        android:drawable="@drawable/orange_circle" />
+    <item android:drawable="@drawable/white_ball" android:state_checked="true"
+        android:state_enabled="true" android:state_window_focused="false" />
+    <item android:drawable="@drawable/white_ball" android:state_checked="false"
+        android:state_enabled="true" android:state_window_focused="false" />
 
-    <item android:state_checked="true" android:state_pressed="true"
-        android:state_enabled="true"
-        android:drawable="@drawable/dark_circle" />
-    <item android:state_checked="false" android:state_pressed="true"
-        android:state_enabled="true"
-        android:drawable="@drawable/dark_circle" />
+    <item android:drawable="@drawable/dark_circle" android:state_checked="true"
+        android:state_enabled="true" android:state_pressed="true" />
+    <item android:drawable="@drawable/dark_circle" android:state_checked="false"
+        android:state_enabled="true" android:state_pressed="true" />
 
-    <item android:state_checked="true" android:state_focused="true"
-        android:state_enabled="true"
-        android:drawable="@drawable/orange_circle" />
-    <item android:state_checked="false" android:state_focused="true"
-        android:state_enabled="true"
-        android:drawable="@drawable/orange_circle" />
+    <item android:drawable="@drawable/orange_circle" android:state_checked="true"
+        android:state_enabled="true" android:state_focused="true" />
+    <item android:drawable="@drawable/orange_circle" android:state_checked="false"
+        android:state_enabled="true" android:state_focused="true" />
 
-    <item android:state_checked="false"
-        android:state_enabled="true"
-        android:drawable="@drawable/white_ball" />
-    <item android:state_checked="true"
-        android:state_enabled="true"
-        android:drawable="@drawable/orange_circle" />
+    <item android:drawable="@drawable/white_ball" android:state_checked="false" android:state_enabled="true" />
+    <item android:drawable="@drawable/orange_circle" android:state_checked="true" android:state_enabled="true" />
 
 
     <!-- Disabled states -->
 
-    <item android:state_checked="true" android:state_window_focused="false"
-        android:drawable="@drawable/orange_circle" />
-    <item android:state_checked="false" android:state_window_focused="false"
-        android:drawable="@drawable/orange_circle" />
+    <item android:drawable="@drawable/white_ball" android:state_checked="true" android:state_window_focused="false" />
+    <item android:drawable="@drawable/white_ball" android:state_checked="false" android:state_window_focused="false" />
 
-    <item android:state_checked="true" android:state_focused="true"
-        android:drawable="@drawable/orange_circle" />
-    <item android:state_checked="false" android:state_focused="true"
-        android:drawable="@drawable/orange_circle" />
+    <item android:drawable="@drawable/white_ball" android:state_checked="true" android:state_focused="true" />
+    <item android:drawable="@drawable/white_ball" android:state_checked="false" android:state_focused="true" />
 
-    <item android:state_checked="false" android:drawable="@drawable/orange_circle" />
-    <item android:state_checked="true" android:drawable="@drawable/orange_circle" />
+    <item android:drawable="@drawable/white_ball" android:state_checked="false" />
+    <item android:drawable="@drawable/white_ball" android:state_checked="true" />
 
 </selector>
