@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/reset_popup_elements"
-    android:layout_width="300dp"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:background="@drawable/white_round_bg"
-    android:orientation="vertical">
+    android:layout_gravity="center">
 
+    <LinearLayout
+        android:id="@+id/reset_popup_elements"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/white_round_bg"
+        android:orientation="vertical">
+        <!-- Reset popup title -->
     <TextView
-        android:id="@+id/reset_close"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -23,15 +27,15 @@
         android:textColor="@color/Red"
         android:textSize="35sp"
         android:textStyle="bold" />
-
+        <!-- Just Choose title -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Just choose The New Scores"
+        android:text="@string/JUST_CHOOSE"
         android:textAllCaps="true"
         android:textColor="@color/DrakBlue" />
-
+        <!-- Reset to 15 button -->
     <Button
         android:id="@+id/reset15"
         android:layout_width="match_parent"
@@ -46,7 +50,7 @@
         android:textColor="@color/White"
         android:textSize="24sp"
         android:textStyle="bold" />
-
+        <!-- Reset to 17 button -->
     <Button
         android:id="@+id/reset17"
         android:layout_width="match_parent"
@@ -61,12 +65,12 @@
         android:text="@string/seventeenAll"
         android:textSize="24sp"
         android:textStyle="bold" />
-
+        <!-- Reset to 0 button -->
     <Button
         android:id="@+id/reset0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="20dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/red_round_bg"
@@ -75,4 +79,20 @@
         android:textColor="@color/White"
         android:textSize="24sp"
         android:textStyle="bold" />
-</LinearLayout>
+        <!-- Back button -->
+        <Button
+            android:id="@+id/back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/dark_round_bg"
+            android:gravity="center"
+            android:text="@string/RESETBACK"
+            android:textColor="@color/White"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</ScrollView>

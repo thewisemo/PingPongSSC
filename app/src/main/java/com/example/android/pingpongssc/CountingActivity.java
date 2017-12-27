@@ -3,6 +3,7 @@ package com.example.android.pingpongssc;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -27,19 +28,30 @@ public class CountingActivity extends AppCompatActivity {
     ImageButton resetBtn;
     Button standingsBtn;
     // PopupWindow variables
-    PopupWindow resetPopupWindow, standingPopupWindow;
+    PopupWindow resetPopupWindow;
     // RIGHT & LEFT Scores &
-    // Matches Global Integer variables
     int leftTeamScore, rightTeamScore,
-            FirstLeftMatch, FirstRightMatch,
+    // Recent Matches Global Integer variables
+    FirstLeftMatch, FirstRightMatch,
             SecondLeftMatch, SecondRightMatch,
-            ThirdLeftMatch, ThirdRightMatch;
+            ThirdLeftMatch, ThirdRightMatch,
+    // Total Bests Won
+    LeftTotalWonBests, RightTotalWonBests,
+    // First Best Matches Scores Integers Global Variables
+    FrBFirstLeftMatch, FrBFirstRightMatch,
+            FrBSecondLeftMatch, FrBSecondRightMatch,
+            FrBThirdLeftMatch, FrBThirdRightMatch,
+    // Second Best Matches Scores Integers Global Variables
+    SeBFirstLeftMatch, SeBFirstRightMatch,
+            SeBSecondLeftMatch, SeBSecondRightMatch,
+            SeBThirdLeftMatch, SeBThirdRightMatch,
+    // Third Best Matches Scores Integers Global Variables
+    ThBFirstLeftMatch, ThBFirstRightMatch,
+            ThBSecondLeftMatch, ThBSecondRightMatch,
+            ThBThirdLeftMatch, ThBThirdRightMatch;
+
     // Names TextViews Global Variables
-    TextView leftTeamName, rightTeamName,
-            StandLeftTeamName, StandRightTeamName,
-            LeftFirstMatchTxt, RightFirstMatchTxt,
-            LeftSecondMatchTxt, RightSecondMatchTxt,
-            LeftThirdMatchTxt, RightThirdMatchTxt;
+    TextView leftTeamName, rightTeamName;
 
     // This @Override saves current data on screen mobile rotation and showing standings popup view
     @Override
@@ -93,6 +105,7 @@ public class CountingActivity extends AppCompatActivity {
                 // Inflate the custom layout/view
                 assert inflater != null;
                 @SuppressLint("InflateParams") View customView = inflater.inflate(R.layout.resetpop, null);
+                setTheme(R.style.Theme_AppCompat_Dialog);
                 /*
                 public PopupWindow (View contentView, int width, int height)
                 Create a new non focusable popup window which can display the contentView.
@@ -114,6 +127,7 @@ public class CountingActivity extends AppCompatActivity {
                 if (Build.VERSION.SDK_INT >= 21) {
                     resetPopupWindow.setElevation(5.0f);
                 }
+
                 // Reset0 button
                 Button reset0 = customView.findViewById(R.id.reset0);
                 reset0.setOnClickListener(new View.OnClickListener() {
@@ -156,6 +170,14 @@ public class CountingActivity extends AppCompatActivity {
                         resetPopupWindow.dismiss();
                     }
                 });
+                // Back button
+                Button back = customView.findViewById(R.id.back);
+                back.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        resetPopupWindow.dismiss();
+                    }
+                });
                 /*
                 public void showAtLocation (View parent, int gravity, int x, int y)
                 Display the content view in a popup window at the specified location. If the
@@ -181,63 +203,43 @@ public class CountingActivity extends AppCompatActivity {
         standingsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Initialize a new instance of LayoutInflater service
-                LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
-                // Inflate the custom layout/view
-                assert inflater != null;
-                @SuppressLint("InflateParams") View customView = inflater.inflate(R.layout.standings_popup, null);
-/*
-----------------------------------------------------------------------------------------------------
-    the standings popup was created in a separate class and I was passing these data
-    through keys between it and this CountingActivity class BUT when I read more about popups
-    I Found that there is a Inflater to do this and So it was perfect solution for the
-    Reset popup, Could you please tell me is it possible to pass data from CountingActivity class
-    to Standings class here ? instead of passing it to a separate standings class ?
-    I want to do this as the standings will have more buttons to do things on the scores and
-    this is how i reached to use the magic inflaters codes :)
-    Thanks
----- Where to put these Variables ? AND How if there is something new to write before/with it ? ----
-                // Assign the 5 Matches values = 0
-                FirstLeftMatch = 0; FirstRightMatch = 0;
-                SecondLeftMatch = 0; SecondRightMatch = 0;
-                ThirdLeftMatch = 0; ThirdRightMatch = 0;
-                StandRightTeamName = rightTeamName;
-                StandLeftTeamName = leftTeamName;
-                //Assigns textViews public variables to IDs in standings_popup.xml
-                StandLeftTeamName = findViewById(R.id.stand_left_team_name);
-                //To be sure that the Name will scroll horizontally repetitively
-                findViewById(R.id.stand_left_team_name).setSelected(true);
-                StandRightTeamName = findViewById(R.id.stand_right_team_name);
-                //To be sure that the Name will scroll horizontally repetitively
-                findViewById(R.id.stand_right_team_name).setSelected(true);
-                //Assigns Left & Right Matches Scores textViews public variables to IDs in standings_popup.xml
-                LeftFirstMatchTxt = findViewById(R.id.left_first_match_score);
-                RightFirstMatchTxt = findViewById(R.id.rightFirstMatchScore);
-                LeftSecondMatchTxt = findViewById(R.id.leftSecondMatchScore);
-                RightSecondMatchTxt = findViewById(R.id.rightSecondMatchScore);
-                LeftThirdMatchTxt = findViewById(R.id.leftThirdMatchScore);
-                RightThirdMatchTxt = findViewById(R.id.rightThirdMatchScore);
-                // Put Matches scores as Strings in their TextViews
-                LeftFirstMatchTxt.setText(String.valueOf(FirstLeftMatch));
-                RightFirstMatchTxt.setText(String.valueOf(FirstRightMatch));
-                LeftSecondMatchTxt.setText(String.valueOf(SecondLeftMatch));
-                RightSecondMatchTxt.setText(String.valueOf(SecondRightMatch));
-                LeftThirdMatchTxt.setText(String.valueOf(ThirdLeftMatch));
-                RightThirdMatchTxt.setText(String.valueOf(ThirdRightMatch));
----------------------------------------------------------------------------------------------------
-*/
-                // Initialize a new instance of popup window
-                standingPopupWindow = new PopupWindow(
-                        customView,
-                        LinearLayout.LayoutParams.WRAP_CONTENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT);
-                // Set an elevation value for popup window
-                // Call requires API level 21
-                if (Build.VERSION.SDK_INT >= 21) {
-                    standingPopupWindow.setElevation(5.0f);
-                }
-                // Finally, show the popup window at the center location of root relative layout
-                standingPopupWindow.showAtLocation(popupsMainRelativeLayout, Gravity.CENTER, 0, 0);
+                Intent standings = new Intent(CountingActivity.this, Standings.class);
+                // Pass Names scores to Standings class
+                standings.putExtra("LEFTNAMESTAND", leftTeamName.getText().toString());
+                standings.putExtra("RIGHTNAMESTAND", rightTeamName.getText().toString());
+                // Pass Recent Matches scores to StandPop class
+                standings.putExtra("LeftFirstMatch", FirstLeftMatch);
+                standings.putExtra("RightFirstMatch", FirstRightMatch);
+                standings.putExtra("LeftSecondMatch", SecondLeftMatch);
+                standings.putExtra("RightSecondMatch", SecondRightMatch);
+                standings.putExtra("LeftThirdMatch", ThirdLeftMatch);
+                standings.putExtra("RightThirdMatch", ThirdRightMatch);
+                // Pass Total Won Bests
+                standings.putExtra("TotalLeftBestsTxt", LeftTotalWonBests);
+                standings.putExtra("TotalRightBestsTxt", RightTotalWonBests);
+                // Pass 1st Best Matches Scores
+                standings.putExtra("LeftFirstMatchFrB", FrBFirstLeftMatch);
+                standings.putExtra("RightFirstMatchFrB", FrBFirstRightMatch);
+                standings.putExtra("LeftSecondMatchFrB", FrBSecondLeftMatch);
+                standings.putExtra("RightSecondMatchFrB", FrBSecondRightMatch);
+                standings.putExtra("LeftThirdMatchFrB", FrBThirdLeftMatch);
+                standings.putExtra("RightThirdMatchFrB", FrBThirdRightMatch);
+                // Pass 2nd Best Matches Scores
+                standings.putExtra("LeftFirstMatchSeB", SeBFirstLeftMatch);
+                standings.putExtra("RightFirstMatchSeB", SeBFirstRightMatch);
+                standings.putExtra("LeftSecondMatchSeB", SeBSecondLeftMatch);
+                standings.putExtra("RightSecondMatchSeB", SeBSecondRightMatch);
+                standings.putExtra("LeftThirdMatchSeB", SeBThirdLeftMatch);
+                standings.putExtra("RightThirdMatchSeB", SeBThirdRightMatch);
+                // Pass 3rd Best Matches Scores
+                standings.putExtra("LeftFirstMatchThB", ThBFirstLeftMatch);
+                standings.putExtra("RightFirstMatchThB", ThBFirstRightMatch);
+                standings.putExtra("LeftSecondMatchThB", ThBSecondLeftMatch);
+                standings.putExtra("RightSecondMatchThB", ThBSecondRightMatch);
+                standings.putExtra("LeftThirdMatchThB", ThBThirdLeftMatch);
+                standings.putExtra("RightThirdMatchThB", ThBThirdRightMatch);
+                // Start Activity standings Intent
+                startActivity(standings);
             }
         });
     }
@@ -258,12 +260,8 @@ public class CountingActivity extends AppCompatActivity {
     // If the popup Reset OR Standings view is not showing then finish (((( NEED TO BE EXIT APP WARNING screen ))))
     @Override
     public void onBackPressed() {
-        resetPopupWindow.setOutsideTouchable(true);
-        resetPopupWindow.setFocusable(true);
-        if (resetPopupWindow != null && resetPopupWindow.isShowing()
-                || standingPopupWindow != null && standingPopupWindow.isShowing()) {
+        if (resetPopupWindow.isShowing()) {
             resetPopupWindow.dismiss();
-            standingPopupWindow.dismiss();
         } else super.onBackPressed();
     }
 
@@ -272,27 +270,177 @@ public class CountingActivity extends AppCompatActivity {
         // Increase score by 1 then display new score
         leftTeamScore = leftTeamScore + 1;
         displayForLeft(leftTeamScore);
-        // Change the left Matches variables to equals this match score as a Winner and srtore the Right score to this match
-        if (leftTeamScore == 3 && SecondLeftMatch == 3 | SecondRightMatch == 3 &&
-                FirstLeftMatch == 3 | FirstRightMatch == 3) {
+        // 3rd Best results
+        // If Left Scores final point ( WON ) then:
+        // Make Left is a Winner to the match and
+        // save the Right final score to the 1st Best match number then:
+        // reset the all recent Matches if the left won the 3rd Match in the 1st Best too " last case in the 1st if statement"
+        if (leftTeamScore == 3 & SecondLeftMatch == 3 | SecondRightMatch == 3 &
+                FirstLeftMatch == 3 | FirstRightMatch == 3 &
+                ThBSecondLeftMatch == 3 | ThBSecondRightMatch == 3 |
+                ThBFirstLeftMatch == 3 | ThBFirstRightMatch == 3) {
+            // Left Won the third recent Match
             ThirdLeftMatch = 3;
             ThirdRightMatch = rightTeamScore;
+            // inflate a dialogue popup for left winning the 1st Best 3rd Match if YES then
+            ////////////////////////
+            // Left won the 1st Best 3rd Match
+            ThBThirdLeftMatch = 3;
+            ThBThirdRightMatch = rightTeamScore;
             //Reset scores to 0 then display both scores
             leftTeamScore = 0;
             rightTeamScore = 0;
             displayForLeft(leftTeamScore);
             displayForRight(rightTeamScore);
-        } else if (leftTeamScore == 3 && FirstLeftMatch == 3 | FirstRightMatch == 3) {
+            // Reset Recents Matches scores to Zero so the 2nd Best is count
+            FirstLeftMatch = 0;
+            FirstRightMatch = 0;
+            SecondLeftMatch = 0;
+            SecondRightMatch = 0;
+            ThirdRightMatch = 0;
+            ThirdLeftMatch = 0;
+        } else if (leftTeamScore == 3 & FirstLeftMatch == 3 || FirstRightMatch == 3 &
+                ThBFirstLeftMatch == 3 | ThBFirstRightMatch == 3) {
+            // Left Won the 2nd recent Match
             SecondLeftMatch = 3;
             SecondRightMatch = rightTeamScore;
+            // inflate a dialogue popup for left winning the 1st Best 2ndd Match if YES then
+            ////////////////////////
+            // Left won the 1st Best 2nd Match
+            ThBSecondLeftMatch = 3;
+            ThBSecondRightMatch = rightTeamScore;
             //Reset scores to 0 then display both scores
             leftTeamScore = 0;
             rightTeamScore = 0;
             displayForLeft(leftTeamScore);
             displayForRight(rightTeamScore);
         } else if (leftTeamScore == 3) {
+            // Left Won the 1st recent Match
             FirstLeftMatch = 3;
             FirstRightMatch = rightTeamScore;
+            // inflate a dialogue popup for left winning the 1st Best 1st Match if YES then
+            ////////////////////////
+            // Left won the 1st Best 2nd Match
+            ThBFirstLeftMatch = 3;
+            ThBFirstRightMatch = rightTeamScore;
+            //Reset scores to 0 then display both scores
+            leftTeamScore = 0;
+            rightTeamScore = 0;
+            displayForLeft(leftTeamScore);
+            displayForRight(rightTeamScore);
+        }
+        // 2nd Best results
+        // If Left Scores final point ( WON ) then:
+        // Make Left is a Winner to the match and
+        // save the Right final score to the 1st Best match number then:
+        // reset the all recent Matches if the left won the 3rd Match in the 1st Best too " last case in the 1st if statement"
+        else if (leftTeamScore == 3 & SecondLeftMatch == 3 | SecondRightMatch == 3 &
+                FirstLeftMatch == 3 | FirstRightMatch == 3 &
+                SeBSecondLeftMatch == 3 | SeBSecondRightMatch == 3 |
+                SeBFirstLeftMatch == 3 | SeBFirstRightMatch == 3) {
+            // Left Won the third recent Match
+            ThirdLeftMatch = 3;
+            ThirdRightMatch = rightTeamScore;
+            // inflate a dialogue popup for left winning the 1st Best 3rd Match if YES then
+            ////////////////////////
+            // Left won the 1st Best 3rd Match
+            SeBThirdLeftMatch = 3;
+            SeBThirdRightMatch = rightTeamScore;
+            //Reset scores to 0 then display both scores
+            leftTeamScore = 0;
+            rightTeamScore = 0;
+            displayForLeft(leftTeamScore);
+            displayForRight(rightTeamScore);
+            // Reset Recents Matches scores to Zero so the 2nd Best is count
+            FirstLeftMatch = 0;
+            FirstRightMatch = 0;
+            SecondLeftMatch = 0;
+            SecondRightMatch = 0;
+            ThirdRightMatch = 0;
+            ThirdLeftMatch = 0;
+        } else if (leftTeamScore == 3 & FirstLeftMatch == 3 | FirstRightMatch == 3 &
+                SeBFirstLeftMatch == 3 | SeBFirstRightMatch == 3) {
+            // Left Won the 2nd recent Match
+            SecondLeftMatch = 3;
+            SecondRightMatch = rightTeamScore;
+            // inflate a dialogue popup for left winning the 1st Best 2ndd Match if YES then
+            ////////////////////////
+            // Left won the 1st Best 2nd Match
+            SeBSecondLeftMatch = 3;
+            SeBSecondRightMatch = rightTeamScore;
+            //Reset scores to 0 then display both scores
+            leftTeamScore = 0;
+            rightTeamScore = 0;
+            displayForLeft(leftTeamScore);
+            displayForRight(rightTeamScore);
+        } else if (leftTeamScore == 3) {
+            // Left Won the 1st recent Match
+            FirstLeftMatch = 3;
+            FirstRightMatch = rightTeamScore;
+            // inflate a dialogue popup for left winning the 1st Best 1st Match if YES then
+            ////////////////////////
+            // Left won the 1st Best 2nd Match
+            SeBFirstLeftMatch = 3;
+            SeBFirstRightMatch = rightTeamScore;
+            //Reset scores to 0 then display both scores
+            leftTeamScore = 0;
+            rightTeamScore = 0;
+            displayForLeft(leftTeamScore);
+            displayForRight(rightTeamScore);
+        }
+        // 1st Best results
+        // If Left Scores final point ( WON ) then:
+        // Make Left is a Winner to the match and
+        // save the Right final score to the 1st Best match number then:
+        // reset the all recent Matches if the left won the 3rd Match in the 1st Best too " last case in the 1st if statement"
+        else if (leftTeamScore == 3 & SecondLeftMatch == 3 | SecondRightMatch == 3 &
+                FirstLeftMatch == 3 | FirstRightMatch == 3 &
+                FrBSecondLeftMatch == 3 | FrBSecondRightMatch == 3 |
+                FrBFirstLeftMatch == 3 | FrBFirstRightMatch == 3) {
+            // Left Won the third recent Match
+            ThirdLeftMatch = 3;
+            ThirdRightMatch = rightTeamScore;
+            // inflate a dialogue popup for left winning the 1st Best 3rd Match if YES then
+            ////////////////////////
+            // Left won the 1st Best 3rd Match
+            FrBThirdLeftMatch = 3;
+            FrBThirdRightMatch = rightTeamScore;
+            //Reset scores to 0 then display both scores
+            leftTeamScore = 0;
+            rightTeamScore = 0;
+            displayForLeft(leftTeamScore);
+            displayForRight(rightTeamScore);
+            // Reset Recents Matches scores to Zero so the 2nd Best is count
+            FirstLeftMatch = 0;
+            FirstRightMatch = 0;
+            SecondLeftMatch = 0;
+            SecondRightMatch = 0;
+            ThirdRightMatch = 0;
+            ThirdLeftMatch = 0;
+        } else if (leftTeamScore == 3 & FirstLeftMatch == 3 | FirstRightMatch == 3 &
+                FrBFirstLeftMatch == 3 | FrBFirstRightMatch == 3) {
+            // Left Won the 2nd recent Match
+            SecondLeftMatch = 3;
+            SecondRightMatch = rightTeamScore;
+            // inflate a dialogue popup for left winning the 1st Best 2ndd Match if YES then
+            ////////////////////////
+            // Left won the 1st Best 2nd Match
+            FrBSecondLeftMatch = 3;
+            FrBSecondRightMatch = rightTeamScore;
+            //Reset scores to 0 then display both scores
+            leftTeamScore = 0;
+            rightTeamScore = 0;
+            displayForLeft(leftTeamScore);
+            displayForRight(rightTeamScore);
+        } else if (leftTeamScore == 3) {
+            // Left Won the 1st recent Match
+            FirstLeftMatch = 3;
+            FirstRightMatch = rightTeamScore;
+            // inflate a dialogue popup for left winning the 1st Best 1st Match if YES then
+            ////////////////////////
+            // Left won the 1st Best 2nd Match
+            FrBFirstLeftMatch = 3;
+            FrBFirstRightMatch = rightTeamScore;
             //Reset scores to 0 then display both scores
             leftTeamScore = 0;
             rightTeamScore = 0;

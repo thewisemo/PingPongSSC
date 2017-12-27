@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/reset_popup_elements"
-    android:layout_width="300dp"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@drawable/white_round_bg"
-    android:orientation="vertical">
+    android:background="@color/DrakBlue">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/DrakBlue"
+    android:orientation="vertical">
     <TextView
         android:id="@+id/standings_head"
         android:layout_width="match_parent"
@@ -14,44 +18,38 @@
         android:layout_gravity="center"
         android:background="@color/White"
         android:gravity="center"
-        android:padding="5dp"
-        android:paddingEnd="30dp"
-        android:paddingLeft="30dp"
-        android:paddingRight="30dp"
-        android:paddingStart="30dp"
+        android:padding="10dp"
         android:text="@string/Standings"
-        android:textColor="@color/Red"
+        android:textColor="@color/DrakBlue"
         android:textSize="35sp"
         android:textStyle="bold" />
-
+        <!-- Recent 3 Matches Scores -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/DrakBlue"
         android:gravity="center"
-        android:padding="5dp"
-        android:text="@string/RECENT_SCORES"
+        android:padding="15dp"
+        android:text="@string/RECENT_Matches_SCORES"
         android:textAllCaps="true"
         android:textColor="@color/White"
         android:textStyle="bold" />
     <!-- Start Horizontal names -->
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@color/Red"
         android:gravity="center"
         android:orientation="horizontal">
         <!-- Left Name -->
         <TextView
             android:id="@+id/stand_left_team_name"
-            android:layout_width="0dp"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginEnd="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_weight="1"
-            android:background="@color/Red"
+            android:layout_marginEnd="50dp"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/red_round_bg"
             android:ellipsize="marquee"
             android:focusable="true"
             android:focusableInTouchMode="true"
@@ -68,13 +66,12 @@
         <!-- Right Name -->
         <TextView
             android:id="@+id/stand_right_team_name"
-            android:layout_width="0dp"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_weight="1"
-            android:background="@color/Red"
+            android:layout_marginLeft="50dp"
+            android:layout_marginStart="50dp"
+            android:background="@drawable/red_round_bg"
             android:ellipsize="marquee"
             android:focusable="true"
             android:focusableInTouchMode="true"
@@ -90,133 +87,966 @@
             android:textStyle="bold" />
         <!-- End Horizontal names -->
     </LinearLayout>
-    <!-- Start matches Horizontal -->
+        <!-- 3 Matches scores Vertical -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:baselineAligned="false"
+        android:background="@color/DrakBlue"
         android:gravity="center"
-        android:orientation="horizontal">
-        <!-- Start Left matches -->
+        android:orientation="vertical">
+        <!-- Start 1st Match scores Horizontal -->
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/white_round_bg"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:paddingLeft="60dp"
+            android:paddingRight="60dp">
             <!-- 1st Left Match Score -->
             <TextView
                 android:id="@+id/left_first_match_score"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/dark_small_round_bg"
+                android:layout_marginEnd="60dp"
+                android:layout_marginRight="60dp"
                 android:gravity="center"
                 android:text="@string/zero"
-                android:textColor="@color/White"
+                android:textColor="@color/DrakBlue"
                 android:textSize="35sp"
                 android:textStyle="bold" />
-            <!-- 2nd Left Match Score -->
+            <!-- 1st Match Sign -->
             <TextView
-                android:id="@+id/leftSecondMatchScore"
-                android:layout_width="match_parent"
+                android:id="@+id/first_match_sign"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/dark_small_round_bg"
                 android:gravity="center"
-                android:text="@string/zero"
-                android:textColor="@color/White"
-                android:textSize="35sp"
+                android:text="@string/First"
+                android:textColor="@color/Red"
+                android:textSize="15sp"
                 android:textStyle="bold" />
-            <!-- 3rd Left Match Score -->
-            <TextView
-                android:id="@+id/leftThirdMatchScore"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/dark_small_round_bg"
-                android:gravity="center"
-                android:text="@string/zero"
-                android:textColor="@color/White"
-                android:textSize="35sp"
-                android:textStyle="bold" />
-            <!-- End left matches -->
-        </LinearLayout>
-        <!-- Start Right matches -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
             <!-- 1st Right Match Score -->
             <TextView
                 android:id="@+id/rightFirstMatchScore"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/dark_small_round_bg"
+                android:layout_marginLeft="60dp"
+                android:layout_marginStart="60dp"
                 android:gravity="center"
                 android:text="@string/zero"
-                android:textColor="@color/White"
+                android:textColor="@color/DrakBlue"
                 android:textSize="35sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <!-- Start 2nd Match scores Horizontal -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/white_round_bg"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="60dp"
+            android:paddingRight="60dp">
+            <!-- 2nd Left Match Score -->
+            <TextView
+                android:id="@+id/leftSecondMatchScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="60dp"
+                android:layout_marginRight="60dp"
+                android:gravity="center"
+                android:text="@string/zero"
+                android:textColor="@color/DrakBlue"
+                android:textSize="35sp"
+                android:textStyle="bold" />
+            <!-- 2nd Match Sign -->
+            <TextView
+                android:id="@+id/second_match_sign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/Second"
+                android:textColor="@color/Red"
+                android:textSize="15sp"
                 android:textStyle="bold" />
             <!-- 2nd Right Match Score -->
             <TextView
                 android:id="@+id/rightSecondMatchScore"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/dark_small_round_bg"
+                android:layout_marginLeft="60dp"
+                android:layout_marginStart="60dp"
                 android:gravity="center"
                 android:text="@string/zero"
-                android:textColor="@color/White"
+                android:textColor="@color/DrakBlue"
                 android:textSize="35sp"
+                android:textStyle="bold" />
+            <!-- End 2nd Match scores Horizontal -->
+        </LinearLayout>
+        <!-- Start 3rd Match scores Horizontal -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/white_round_bg"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="60dp"
+            android:paddingRight="60dp">
+            <!-- 3rd Left Match Score -->
+            <TextView
+                android:id="@+id/leftThirdMatchScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="60dp"
+                android:layout_marginRight="60dp"
+                android:gravity="center"
+                android:text="@string/zero"
+                android:textColor="@color/DrakBlue"
+                android:textSize="35sp"
+                android:textStyle="bold" />
+            <!-- 2nd Match Sign -->
+            <TextView
+                android:id="@+id/third_match_sign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/Third"
+                android:textColor="@color/Red"
+                android:textSize="15sp"
                 android:textStyle="bold" />
             <!-- 3rd Right Match Score -->
             <TextView
                 android:id="@+id/rightThirdMatchScore"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginStart="60dp"
+                android:gravity="center"
+                android:text="@string/zero"
+                android:textColor="@color/DrakBlue"
+                android:textSize="35sp"
+                android:textStyle="bold" />
+            <!-- End 3rd Match scores Horizontal -->
+        </LinearLayout>
+
+    </LinearLayout>
+        <!-- Recent 3 Matches Scores -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/DrakBlue"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="@string/BESTS_WON"
+            android:textAllCaps="true"
+            android:textColor="@color/White"
+            android:textStyle="bold" />
+        <!-- Start Horizontal names -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <!-- Left Name -->
+            <TextView
+                android:id="@+id/left_bests_won"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="60dp"
+                android:layout_marginRight="60dp"
+                android:background="@drawable/red_round_bg"
+                android:ellipsize="marquee"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="center"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:text="@string/zero"
+                android:textAllCaps="true"
+                android:textColor="#ffffff"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+            <!-- Right Name -->
+            <TextView
+                android:id="@+id/right_bests_won"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="60dp"
+                android:layout_marginStart="60dp"
+                android:background="@drawable/red_round_bg"
+                android:ellipsize="marquee"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="center"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:text="@string/zero"
+                android:textAllCaps="true"
+                android:textColor="#ffffff"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+            <!-- End Horizontal names -->
+        </LinearLayout>
+        <!-- start 1st best scores row -->
+        <LinearLayout
+            android:id="@+id/first_best_scores_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+            <!-- Start left best scores -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="25dp"
+                android:layout_marginRight="25dp"
+                android:orientation="horizontal">
+                <!-- Start 1st best 1st match score CheckBox -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <!-- Left best 1 1st match -->
+                    <TextView
+                        android:id="@+id/left_best_one_first_sign"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/First"
+                        android:textColor="@color/Red"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/left_best_one_first_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/btn_check" />
+
+                    <TextView
+                        android:id="@+id/left_best_one_first_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zero"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                    <!-- End 1st best 1st match score CheckBox -->
+                </LinearLayout>
+                <!-- Start 1st best 2nd match score CheckBox -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                android:layout_marginStart="10dp"
+                android:gravity="center"
+                    android:orientation="vertical">
+                    <!-- Left best 1 2nd match -->
+                    <TextView
+                        android:id="@+id/left_best_one_second_sign"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Second"
+                        android:textColor="@color/Red"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/left_best_one_second_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/btn_check" />
+
+                    <TextView
+                        android:id="@+id/left_best_one_second_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zero"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                    <!-- End 1st best 2nd match score CheckBox -->
+                </LinearLayout>
+                <!-- Start 1st best 3rd match score CheckBox -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <!-- Left best 1 3rd match -->
+                    <TextView
+                        android:id="@+id/left_best_one_third_sign"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Third"
+                        android:textColor="@color/Red"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/left_best_one_third_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/btn_check" />
+
+                    <TextView
+                        android:id="@+id/left_best_one_third_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zero"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                    <!-- End 1st best 3rd match score CheckBox -->
+                </LinearLayout>
+                <!-- End left best CheckBoxes -->
+            </LinearLayout>
+            <!-- 1st Match Sign -->
+            <TextView
+                android:id="@+id/first_best_sign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/white_round_bg"
+                android:gravity="center"
+                android:text="@string/First"
+                android:textColor="@color/DrakBlue"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <!-- Start right best CheckBoxes -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginStart="25dp"
+                android:orientation="horizontal">
+                <!-- Start 1st best 1st match score CheckBox -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <!-- right best 1 1st match -->
+                    <TextView
+                        android:id="@+id/right_best_one_first_sign"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/First"
+                        android:textColor="@color/Red"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/right_best_one_first_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/btn_check" />
+
+                    <TextView
+                        android:id="@+id/right_best_one_first_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zero"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                    <!-- End 1st best 1st match score CheckBox -->
+                </LinearLayout>
+                <!-- Start 1st best 2nd match score CheckBox -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                    android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <!-- right best 1 2nd match -->
+                    <TextView
+                        android:id="@+id/right_best_one_second_sign"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Second"
+                        android:textColor="@color/Red"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/right_best_one_second_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/btn_check" />
+
+                    <TextView
+                        android:id="@+id/right_best_one_second_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zero"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                    <!-- End 1st best 2nd match score CheckBox -->
+                </LinearLayout>
+                <!-- Start 1st best 3rd match score CheckBox -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <!-- right best 1 3rd match -->
+                    <TextView
+                        android:id="@+id/right_best_one_third_sign"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Third"
+                        android:textColor="@color/Red"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/right_best_one_third_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/btn_check" />
+
+                    <TextView
+                        android:id="@+id/right_best_one_third_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zero"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                    <!-- End 1st best 3rd match score CheckBox -->
+                </LinearLayout>
+                <!-- End right best CheckBoxes -->
+            </LinearLayout>
+            <!-- End 1st best scores row -->
+        </LinearLayout>
+        <!-- start 2nd best scores row -->
+        <LinearLayout
+            android:id="@+id/second_best_scores_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+            <!-- Start left best scores -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="25dp"
+                android:layout_marginRight="25dp"
+                android:orientation="horizontal">
+                <!-- Start 2nd best 1st match score CheckBox -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                android:gravity="center"
+                    android:orientation="vertical">
+                    <!-- Left best 2 1st match -->
+                    <TextView
+                        android:id="@+id/left_best_two_first_sign"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/First"
+                        android:textColor="@color/Red"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/left_best_two_first_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/btn_check" />
+
+                    <TextView
+                        android:id="@+id/left_best_two_first_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zero"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                    <!-- End 1st best 1st match score CheckBox -->
+                </LinearLayout>
+                <!-- Start 2nd best 2nd match score CheckBox -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <!-- Left best 2 2nd match -->
+                    <TextView
+                        android:id="@+id/left_best_two_second_sign"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Second"
+                        android:textColor="@color/Red"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/left_best_two_second_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/btn_check" />
+
+                    <TextView
+                        android:id="@+id/left_best_two_second_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zero"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                    <!-- End 2nd best 2nd match score CheckBox -->
+                </LinearLayout>
+                <!-- Start 2nd best 3rd match score CheckBox -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <!-- Left best 2 3rd match -->
+                    <TextView
+                        android:id="@+id/left_best_two_third_sign"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Third"
+                        android:textColor="@color/Red"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/left_best_two_third_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/btn_check" />
+
+                    <TextView
+                        android:id="@+id/left_best_two_third_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zero"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                    <!-- End 2nd best 3rd match score CheckBox -->
+                </LinearLayout>
+                <!-- End left best CheckBoxes -->
+            </LinearLayout>
+            <!-- 2nd Best Sign -->
+            <TextView
+                android:id="@+id/second_best_sign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/white_round_bg"
+                android:gravity="center"
+                android:text="@string/Second"
+                android:textColor="@color/DrakBlue"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <!-- Start right best CheckBoxes -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginStart="25dp"
+                android:orientation="horizontal">
+                <!-- Start 2nd best 1st match score CheckBox -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <!-- right best 2 1st match -->
+                    <TextView
+                        android:id="@+id/right_best_two_first_sign"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/First"
+                        android:textColor="@color/Red"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/right_best_two_first_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/btn_check" />
+
+                    <TextView
+                        android:id="@+id/right_best_two_first_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zero"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                    <!-- End 2nd best 1st match score CheckBox -->
+                </LinearLayout>
+                <!-- Start 2nd best 2nd match score CheckBox -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                    android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <!-- right best 2 2nd match -->
+                    <TextView
+                        android:id="@+id/right_best_two_second_sign"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Second"
+                        android:textColor="@color/Red"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/right_best_two_second_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/btn_check" />
+
+                    <TextView
+                        android:id="@+id/right_best_two_second_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zero"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                    <!-- End 2nd best 2nd match score CheckBox -->
+                </LinearLayout>
+                <!-- Start 2nd best 3rd match score CheckBox -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <!-- right best 2 3rd match -->
+                    <TextView
+                        android:id="@+id/right_best_two_third_sign"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Third"
+                        android:textColor="@color/Red"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/right_best_two_third_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/btn_check" />
+
+                    <TextView
+                        android:id="@+id/right_best_two_third_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zero"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                    <!-- End 2nd best 3rd match score CheckBox -->
+                </LinearLayout>
+                <!-- End right best scores -->
+            </LinearLayout>
+            <!-- End 2nd best scores row -->
+        </LinearLayout>
+        <!-- start 3rd best scores row -->
+        <LinearLayout
+            android:id="@+id/third_best_scores_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+            <!-- Start left best scores -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="25dp"
+                android:layout_marginRight="25dp"
+                android:orientation="horizontal">
+                <!-- Start 3rd best 1st match score CheckBox -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                android:gravity="center"
+                    android:orientation="vertical">
+                    <!-- Left best 3 1st match -->
+                    <TextView
+                        android:id="@+id/left_best_three_first_sign"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/First"
+                        android:textColor="@color/Red"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/left_best_three_first_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/btn_check" />
+
+                    <TextView
+                        android:id="@+id/left_best_three_first_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zero"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                    <!-- End 3rt best 1st match score CheckBox -->
+                </LinearLayout>
+                <!-- Start 3rd best 2nd match score CheckBox -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <!-- Left best 3 2nd match -->
+                    <TextView
+                        android:id="@+id/left_best_three_second_sign"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Second"
+                        android:textColor="@color/Red"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/left_best_three_second_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/btn_check" />
+
+                    <TextView
+                        android:id="@+id/left_best_three_second_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zero"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                    <!-- End 3rd best 2nd match score CheckBox -->
+                </LinearLayout>
+                <!-- Start 3rd best 3rd match score CheckBox -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <!-- Left best 3 3rd match -->
+                    <TextView
+                        android:id="@+id/left_best_three_third_sign"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Third"
+                        android:textColor="@color/Red"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/left_best_three_third_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/btn_check" />
+
+                    <TextView
+                        android:id="@+id/left_best_three_third_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zero"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                    <!-- End 3rd best 3rd match score CheckBox -->
+                </LinearLayout>
+                <!-- End left best CheckBoxes -->
+            </LinearLayout>
+            <!-- 3rd Best Sign -->
+            <TextView
+                android:id="@+id/third_best_sign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/white_round_bg"
+                android:gravity="center"
+                android:text="@string/Third"
+                android:textColor="@color/DrakBlue"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <!-- Start right best CheckBoxes -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginStart="25dp"
+                android:orientation="horizontal">
+                <!-- Start 3rd best 1st match score CheckBox -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <!-- right best 3 1st match -->
+                    <TextView
+                        android:id="@+id/right_best_three_first_sign"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/First"
+                        android:textColor="@color/Red"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/right_best_three_first_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/btn_check" />
+
+                    <TextView
+                        android:id="@+id/right_best_three_first_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zero"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                    <!-- End 3rd best 1st match score CheckBox -->
+                </LinearLayout>
+                <!-- Start 3rd best 2nd match score CheckBox -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                    android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                    android:layout_marginStart="10dp"
+                android:gravity="center"
+                    android:orientation="vertical">
+                    <!-- right best 3 2nd match -->
+                    <TextView
+                        android:id="@+id/right_best_three_second_sign"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Second"
+                        android:textColor="@color/Red"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/right_best_three_second_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/btn_check" />
+
+                    <TextView
+                        android:id="@+id/right_best_three_second_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zero"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                    <!-- End 3rd best 2nd match score CheckBox -->
+                </LinearLayout>
+                <!-- Start 3rd best 3rd match score CheckBox -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <!-- right best 3 3rd match -->
+                    <TextView
+                        android:id="@+id/right_best_three_third_sign"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Third"
+                        android:textColor="@color/Red"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/right_best_three_third_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/btn_check" />
+
+                    <TextView
+                        android:id="@+id/right_best_three_third_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zero"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                    <!-- End 3rd best 3rd match score CheckBox -->
+                </LinearLayout>
+                <!-- End right best scores -->
+            </LinearLayout>
+            <!-- End 3rd best scores row -->
+        </LinearLayout>
+        <!-- Start Reset & Share buttons -->
+        <LinearLayout
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+            <!-- Reset all button -->
+            <Button
+                android:id="@+id/reset_scores"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/red_round_bg"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="@string/reset"
+                android:textColor="@color/White"
+                android:textStyle="bold" />
+            <!-- Share results button -->
+            <Button
+                android:id="@+id/share_results"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginEnd="10dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/dark_small_round_bg"
-                android:gravity="center"
-                android:text="@string/zero"
-                android:textColor="@color/White"
-                android:textSize="35sp"
+                android:layout_weight="1"
+                android:background="@drawable/white_round_bg"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="@string/SHARE_SCORES"
+                android:textColor="@color/Red"
                 android:textStyle="bold" />
-            <!-- End right matches -->
+            <!-- End Reset & Share buttons -->
         </LinearLayout>
-        <!-- End matches Horizontal -->
     </LinearLayout>
-
-</LinearLayout>
+</ScrollView>

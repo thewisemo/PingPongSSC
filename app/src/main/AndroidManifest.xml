@@ -16,9 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".UserInputNames" />
         <activity android:name=".CountingActivity" />
-        <activity android:name=".UserInputNames"></activity>
-        <!-- Standings Popup window activity and it's style created from the styles xml file -->
+        <activity
+            android:name=".Standings"
+            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar.MinWidth" />
     </application>
 
 </manifest>

@@ -14,15 +14,19 @@
     <string name="Right_name">Right Player/Team</string>
     <string name="Left_name">Left Player/Team</string>
     <string name="Start">Start</string>
-    <string name="First">\u00201st</string>
-    <string name="Second">\u00202nd</string>
-    <string name="Third">\u00203rd</string>
+    <string name="First">1ST</string>
+    <string name="Second">2ND</string>
+    <string name="Third">3RD</string>
     <string name="Now_serve">Now Serve</string>
     <string name="Standings">Standings</string>
     <string name="Swap">Swap</string>
     <string name="App_logo">App logo</string>
-    <string name="fifteenAll">15 | 15</string>
-    <string name="seventeenAll">17 | 17</string>
-    <string name="ZeroAll">0   |   0</string>
-    <string name="RECENT_SCORES">recent scores</string>
+    <string name="fifteenAll">15\u0020|\u002015</string>
+    <string name="seventeenAll">17\u0020|\u002017</string>
+    <string name="ZeroAll">0\u0020\u0020\u0020|\u0020\u0020\u00200</string>
+    <string name="RECENT_Matches_SCORES">recent Matches scores</string>
+    <string name="RESETBACK">BACK</string>
+    <string name="JUST_CHOOSE">Just choose The New Scores</string>
+    <string name="BESTS_WON">Bests Won\u0020/\u0020Scores</string>
+    <string name="SHARE_SCORES">Share Results</string>
 </resources>

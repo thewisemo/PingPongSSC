@@ -161,7 +161,6 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:background="@color/White" />
-
     <!-- Reset Button -->
     <ImageButton
         android:id="@+id/reset"
@@ -170,8 +169,7 @@
         android:layout_centerHorizontal="true"
         android:layout_centerInParent="true"
         android:background="@drawable/reset_layer_list"
-        android:contentDescription="@string/reset"
-        android:onClick="reset" />
+        android:contentDescription="@string/reset" />
     <!-- Standing Button -->
     <Button
         android:id="@+id/standingsBtn"

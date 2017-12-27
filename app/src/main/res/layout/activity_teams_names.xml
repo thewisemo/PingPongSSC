@@ -27,8 +27,9 @@
 
     <EditText
         android:id="@+id/right_team_name"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_margin="16dp"
         android:focusable="true"
         android:focusableInTouchMode="true"
@@ -41,8 +42,9 @@
 
     <EditText
         android:id="@+id/left_team_name"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_margin="16dp"
         android:focusable="true"
         android:focusableInTouchMode="true"
@@ -54,8 +56,9 @@
 
     <Button
         android:id="@+id/startBtn"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_margin="16dp"
         android:background="@drawable/red_round_bg"
         android:singleLine="true"
