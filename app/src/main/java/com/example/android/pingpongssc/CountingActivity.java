@@ -13,8 +13,6 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -72,21 +70,15 @@ public class CountingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.requestWindowFeature(Window.FEATURE_ACTION_BAR);
-        // Remove notifications bar (( Makes Activity full screen ))
-        this.getWindow().setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
+        // ToolBar menu
+        Toolbar moToolBar = findViewById(R.id.ToolBar);
+        setSupportActionBar(moToolBar);
         // Assign 2TextViews to the left & right IDs
         // Create bundle as Bundle to get data passed from UserInputNames class
         leftTeamName = findViewById(R.id.left_team_name);
         rightTeamName = findViewById(R.id.right_team_name);
         Bundle bundle = getIntent().getExtras();
-        // Tool Bar menu
-        Toolbar wisemoTBar = findViewById(R.id.wisemoToolBar);
-        setSupportActionBar(wisemoTBar);
-
         // To import data by their referred keys from 2 EditText views in the activity_teams_names
         // Put the texts saved in keys and set Names TextViews into the
         // Counting views & Standing pop TextView Global Variables
@@ -287,14 +279,40 @@ public class CountingActivity extends AppCompatActivity {
         });
     }
 
-    // Wisemo Tool Bar inflater
+    ////////////////////////////////////////////////////////////////
+    @Override
+    public void onContentChanged() {
+        if ((FrBFirstLeftMatch == 3 && FrBSecondLeftMatch == 3) ||
+                (FrBSecondLeftMatch == 3 & FrBThirdLeftMatch == 3) ||
+                (FrBFirstLeftMatch == 3 && FrBThirdLeftMatch == 3)) {
+            LeftTotalWonBests = LeftTotalWonBests + 1;
+            FirstLeftMatch = 0;
+            FirstRightMatch = 0;
+            SecondLeftMatch = 0;
+            SecondRightMatch = 0;
+            ThirdLeftMatch = 0;
+            ThirdRightMatch = 0;
+        } else if ((SeBFirstLeftMatch == 3 && SeBSecondLeftMatch == 3) ||
+                (SeBSecondLeftMatch == 3 && SeBThirdLeftMatch == 3) ||
+                (SeBFirstLeftMatch == 3 && SeBThirdLeftMatch == 3)) {
+            LeftTotalWonBests = LeftTotalWonBests + 1;
+            FirstLeftMatch = 0;
+            FirstRightMatch = 0;
+            SecondLeftMatch = 0;
+            SecondRightMatch = 0;
+            ThirdLeftMatch = 0;
+            ThirdRightMatch = 0;
+        }
+    }
+////////////////////////////////////////////////////////////////
+
+    //ToolBar inflater
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater wisemoMenuInflater = getMenuInflater();
-        wisemoMenuInflater.inflate(R.menu.wisemo_menu, menu);
+        MenuInflater moMenuInflater = getMenuInflater();
+        moMenuInflater.inflate(R.menu.wisemo_menu, menu);
         return true;
     }
-
     // This Class is to call saved data in onSaveInstanceState for the screen orientation and popup view show
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         // Always call the superclass so it can restore the view hierarchy

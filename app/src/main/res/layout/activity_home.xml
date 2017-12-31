@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient"
+    android:background="@color/DrakBlue"
     android:gravity="center_vertical"
     android:orientation="vertical"
     tools:context=".WelcomeSplashActivity">
@@ -10,23 +10,26 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:contentDescription="@string/App_logo"
         android:src="@drawable/ppssc_logo"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="5dp"
         android:fontFamily="sans-serif-condensed"
         android:gravity="center"
-        android:text="#MadeWithUdacity \n #GoogleUdacityScholars"
-        android:textSize="24sp" />
+        android:text="@string/HASHES"
+        android:textColor="@color/Gray"
+        android:textSize="20sp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="November2017\nWISEMO"
-        android:textColor="#000000"
+        android:text="@string/november2017_nwisemo"
+        android:textColor="@color/White"
         android:textSize="15sp" />
 
 </LinearLayout>

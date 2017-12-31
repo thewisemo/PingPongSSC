@@ -30,7 +30,7 @@
         android:background="@color/DrakBlue"
         android:gravity="center"
         android:padding="15dp"
-        android:text="@string/RECENT_Matches_SCORES"
+        android:text="@string/RECENT_BEST_SCORES"
         android:textAllCaps="true"
         android:textColor="@color/White"
         android:textStyle="bold" />
@@ -1001,52 +1001,19 @@
             </LinearLayout>
             <!-- End 3rd best scores row -->
         </LinearLayout>
-        <!-- Start Reset & Share buttons -->
-        <LinearLayout
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="40dp"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
-            <!-- Reset all button -->
-            <Button
-                android:id="@+id/reset_scores"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginEnd="5dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginStart="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/red_round_bg"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:text="@string/reset"
-                android:textColor="@color/White"
-                android:textStyle="bold" />
             <!-- Share results button -->
             <Button
                 android:id="@+id/share_results"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginEnd="10dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginStart="5dp"
-                android:layout_weight="1"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="15dp"
                 android:background="@drawable/white_round_bg"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
+                android:paddingLeft="60dp"
+                android:paddingRight="60dp"
                 android:text="@string/SHARE_SCORES"
                 android:textColor="@color/Red"
                 android:textStyle="bold" />
-            <!-- End Reset & Share buttons -->
-        </LinearLayout>
     </LinearLayout>
 </ScrollView>

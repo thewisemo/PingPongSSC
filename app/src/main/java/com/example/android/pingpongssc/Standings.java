@@ -28,60 +28,61 @@ public class Standings extends Activity {
             LeftBestThreeMatchThree, RightBestThreeMatchThree;
     Button swapBtn;
 
-    int // Recent Matches Global Integer variables
-            FirstLeftMatch, FirstRightMatch,
-            SecondLeftMatch, SecondRightMatch,
-            ThirdLeftMatch, ThirdRightMatch,
-    // Total Bests Won
-    LeftTotalWonBests, RightTotalWonBests,
-    // First Best Matches Scores Integers Global Variables
-    FrBFirstLeftMatch, FrBFirstRightMatch,
-            FrBSecondLeftMatch, FrBSecondRightMatch,
-            FrBThirdLeftMatch, FrBThirdRightMatch,
-    // Second Best Matches Scores Integers Global Variables
-    SeBFirstLeftMatch, SeBFirstRightMatch,
-            SeBSecondLeftMatch, SeBSecondRightMatch,
-            SeBThirdLeftMatch, SeBThirdRightMatch,
-    // Third Best Matches Scores Integers Global Variables
-    ThBFirstLeftMatch, ThBFirstRightMatch,
-            ThBSecondLeftMatch, ThBSecondRightMatch,
-            ThBThirdLeftMatch, ThBThirdRightMatch;
+    /*
+        int // Recent Matches Global Integer variables
+                FirstLeftMatch, FirstRightMatch,
+                SecondLeftMatch, SecondRightMatch,
+                ThirdLeftMatch, ThirdRightMatch,
+        // Total Bests Won
+        LeftTotalWonBests, RightTotalWonBests,
+        // First Best Matches Scores Integers Global Variables
+        FrBFirstLeftMatch, FrBFirstRightMatch,
+                FrBSecondLeftMatch, FrBSecondRightMatch,
+                FrBThirdLeftMatch, FrBThirdRightMatch,
+        // Second Best Matches Scores Integers Global Variables
+        SeBFirstLeftMatch, SeBFirstRightMatch,
+                SeBSecondLeftMatch, SeBSecondRightMatch,
+                SeBThirdLeftMatch, SeBThirdRightMatch,
+        // Third Best Matches Scores Integers Global Variables
+        ThBFirstLeftMatch, ThBFirstRightMatch,
+                ThBSecondLeftMatch, ThBSecondRightMatch,
+                ThBThirdLeftMatch, ThBThirdRightMatch;
 
-    // This @Override saves current data on screen mobile rotation and showing standings popup view
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        // Save Recent Matches scores in their keys
-        savedInstanceState.putInt("leftMatchFirst", FirstLeftMatch);
-        savedInstanceState.putInt("rightMatchFirst", FirstRightMatch);
-        savedInstanceState.putInt("leftMatchSecond", SecondLeftMatch);
-        savedInstanceState.putInt("rightMatchSecond", SecondRightMatch);
-        savedInstanceState.putInt("leftMatchThird", ThirdLeftMatch);
-        savedInstanceState.putInt("rightMatchThird", ThirdRightMatch);
-        // Save 1st Best Matches Scores in keys
-        savedInstanceState.putInt("leftFrBMatchFirst", FrBFirstLeftMatch);
-        savedInstanceState.putInt("rightFrBMatchFirst", FrBFirstRightMatch);
-        savedInstanceState.putInt("leftFrBMatchSecond", FrBSecondLeftMatch);
-        savedInstanceState.putInt("rightFrBMatchSecond", FrBSecondRightMatch);
-        savedInstanceState.putInt("leftFrBMatchThird", FrBThirdLeftMatch);
-        savedInstanceState.putInt("rightFrBMatchThird", FrBThirdRightMatch);
-        // Save 2nd Best Matches Scores in keys
-        savedInstanceState.putInt("leftSeBMatchFirst", SeBFirstLeftMatch);
-        savedInstanceState.putInt("rightSeBMatchFirst", SeBFirstRightMatch);
-        savedInstanceState.putInt("leftSeBMatchSecond", SeBSecondLeftMatch);
-        savedInstanceState.putInt("rightSeBMatchSecond", SeBSecondRightMatch);
-        savedInstanceState.putInt("leftSeBMatchThird", SeBThirdLeftMatch);
-        savedInstanceState.putInt("rightSeBMatchThird", SeBThirdRightMatch);
-        // Save 3rd Best Matches Scores in keys
-        savedInstanceState.putInt("leftThBMatchFirst", ThBFirstLeftMatch);
-        savedInstanceState.putInt("rightThBMatchFirst", ThBFirstRightMatch);
-        savedInstanceState.putInt("leftThBMatchSecond", ThBSecondLeftMatch);
-        savedInstanceState.putInt("rightThBMatchSecond", ThBSecondRightMatch);
-        savedInstanceState.putInt("leftThBMatchThird", ThBThirdLeftMatch);
-        savedInstanceState.putInt("rightThBMatchThird", ThBThirdRightMatch);
-        // Always call the superclass so it can save the view hierarchy state
-        super.onSaveInstanceState(savedInstanceState);
-    }
-
+        // This @Override saves current data on screen mobile rotation and showing standings popup view
+        @Override
+        public void onSaveInstanceState(Bundle savedInstanceState) {
+            // Save Recent Matches scores in their keys
+            savedInstanceState.putInt("leftMatchFirst", FirstLeftMatch);
+            savedInstanceState.putInt("rightMatchFirst", FirstRightMatch);
+            savedInstanceState.putInt("leftMatchSecond", SecondLeftMatch);
+            savedInstanceState.putInt("rightMatchSecond", SecondRightMatch);
+            savedInstanceState.putInt("leftMatchThird", ThirdLeftMatch);
+            savedInstanceState.putInt("rightMatchThird", ThirdRightMatch);
+            // Save 1st Best Matches Scores in keys
+            savedInstanceState.putInt("leftFrBMatchFirst", FrBFirstLeftMatch);
+            savedInstanceState.putInt("rightFrBMatchFirst", FrBFirstRightMatch);
+            savedInstanceState.putInt("leftFrBMatchSecond", FrBSecondLeftMatch);
+            savedInstanceState.putInt("rightFrBMatchSecond", FrBSecondRightMatch);
+            savedInstanceState.putInt("leftFrBMatchThird", FrBThirdLeftMatch);
+            savedInstanceState.putInt("rightFrBMatchThird", FrBThirdRightMatch);
+            // Save 2nd Best Matches Scores in keys
+            savedInstanceState.putInt("leftSeBMatchFirst", SeBFirstLeftMatch);
+            savedInstanceState.putInt("rightSeBMatchFirst", SeBFirstRightMatch);
+            savedInstanceState.putInt("leftSeBMatchSecond", SeBSecondLeftMatch);
+            savedInstanceState.putInt("rightSeBMatchSecond", SeBSecondRightMatch);
+            savedInstanceState.putInt("leftSeBMatchThird", SeBThirdLeftMatch);
+            savedInstanceState.putInt("rightSeBMatchThird", SeBThirdRightMatch);
+            // Save 3rd Best Matches Scores in keys
+            savedInstanceState.putInt("leftThBMatchFirst", ThBFirstLeftMatch);
+            savedInstanceState.putInt("rightThBMatchFirst", ThBFirstRightMatch);
+            savedInstanceState.putInt("leftThBMatchSecond", ThBSecondLeftMatch);
+            savedInstanceState.putInt("rightThBMatchSecond", ThBSecondRightMatch);
+            savedInstanceState.putInt("leftThBMatchThird", ThBThirdLeftMatch);
+            savedInstanceState.putInt("rightThBMatchThird", ThBThirdRightMatch);
+            // Always call the superclass so it can save the view hierarchy state
+            super.onSaveInstanceState(savedInstanceState);
+        }
+    */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -198,6 +199,7 @@ public class Standings extends Activity {
             RightBestThreeMatchThree.setText(String.valueOf(rightThBThree));
         }
     }
+/*
     // Public Class to call saved data in onSaveInstanceState
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         // Always call the superclass so it can restore the view while screen oriantation or Showing standings popup
@@ -231,4 +233,5 @@ public class Standings extends Activity {
         ThBThirdLeftMatch = savedInstanceState.getInt("leftThBMatchThird");
         ThBThirdRightMatch = savedInstanceState.getInt("leftThBMatchThird");
     }
+*/
 }

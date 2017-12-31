@@ -10,7 +10,7 @@
     <string name="Right_Team">Right</string>
     <string name="Left_Team">Left</string>
     <string name="Enter_names_then_start">Enter names then start</string>
-    <string name="WISEMO">WISEMO #MadeWithUdacity 2017</string>
+    <string name="WISEMO">WISEMO\n#MadeWithUdacity 2017</string>
     <string name="Right_name">Right Player/Team</string>
     <string name="Left_name">Left Player/Team</string>
     <string name="Start">Start</string>
@@ -24,11 +24,13 @@
     <string name="fifteenAll">15\u0020|\u002015</string>
     <string name="seventeenAll">17\u0020|\u002017</string>
     <string name="ZeroAll">0\u0020\u0020\u0020|\u0020\u0020\u00200</string>
-    <string name="RECENT_Matches_SCORES">recent Matches scores</string>
+    <string name="RECENT_BEST_SCORES">recent best scores</string>
     <string name="RESETBACK">BACK</string>
     <string name="JUST_CHOOSE">Just choose The New Scores</string>
     <string name="BESTS_WON">Bests Won\u0020/\u0020Scores</string>
     <string name="SHARE_SCORES">Share Results</string>
     <string name="wisemo_menu_action_new_game">New Game</string>
     <string name="wisemo_menu_action_about">About</string>
+    <string name="HASHES">#MadeWithUdacity\n#GoogleUdacityScholars</string>
+    <string name="november2017_nwisemo">November2017\nWISEMO</string>
 </resources>
