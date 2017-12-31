@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Ping Pong SSC</string>
+    <string name="app_name">PING PONG SC</string>
     <string name="reset">Reset Scores</string>
     <string name="Matches_Won">Matches Won</string>
     <string name="decrement">-</string>
@@ -29,4 +29,6 @@
     <string name="JUST_CHOOSE">Just choose The New Scores</string>
     <string name="BESTS_WON">Bests Won\u0020/\u0020Scores</string>
     <string name="SHARE_SCORES">Share Results</string>
+    <string name="wisemo_menu_action_new_game">New Game</string>
+    <string name="wisemo_menu_action_about">About</string>
 </resources>

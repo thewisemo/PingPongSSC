@@ -7,9 +7,14 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -67,12 +72,21 @@ public class CountingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_ACTION_BAR);
+        // Remove notifications bar (( Makes Activity full screen ))
+        this.getWindow().setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
         // Assign 2TextViews to the left & right IDs
         // Create bundle as Bundle to get data passed from UserInputNames class
         leftTeamName = findViewById(R.id.left_team_name);
         rightTeamName = findViewById(R.id.right_team_name);
         Bundle bundle = getIntent().getExtras();
+        // Tool Bar menu
+        Toolbar wisemoTBar = findViewById(R.id.wisemoToolBar);
+        setSupportActionBar(wisemoTBar);
+
         // To import data by their referred keys from 2 EditText views in the activity_teams_names
         // Put the texts saved in keys and set Names TextViews into the
         // Counting views & Standing pop TextView Global Variables
@@ -86,7 +100,7 @@ public class CountingActivity extends AppCompatActivity {
         findViewById(R.id.left_team_name).setSelected(true);
         //To be sure that the Name will scroll horizontally repetitively
         findViewById(R.id.right_team_name).setSelected(true);
-        // For both : Reset & Standings Popups Views :
+        // For Reset Popup View :
         // Get the application context
         mContext = getApplicationContext();
         // Get the Background Activity
@@ -196,6 +210,35 @@ public class CountingActivity extends AppCompatActivity {
             }
         });
 
+        /////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////
+        // How Update Total Left & Right Integers to be shown in th Standings class?
+        // For Example:
+        /*
+        // If Left Won 1st Best
+        if (FrBFirstLeftMatch == 3 && FrBSecondLeftMatch == 3){
+            LeftTotalWonBests = LeftTotalWonBests + 1;
+            //Reset Left & Right scores to 0 then display both scores
+            leftTeamScore = 0;
+            rightTeamScore = 0;
+            displayForLeft(leftTeamScore);
+            displayForRight(rightTeamScore);
+            // Reset recent matches AND END THE COUNTING
+            FirstLeftMatch = 0;
+            FirstRightMatch = 0;
+            SecondLeftMatch = 0;
+            SecondRightMatch = 0;
+            ThirdLeftMatch = 0;
+            ThirdRightMatch = 0;
+            // Congratulations dialog toast
+            Toast.makeText(getApplicationContext(),
+                    "Congratulations! New Best To Count", Toast.LENGTH_SHORT)
+                    .show();
+        }
+        */
+        /////////////////////////////////////////////////////////////////////////////
+
         // Standings Button
         standingsBtn = findViewById(R.id.standingsBtn);
         //Standings Button clickListner to show popup view from StandPop class
@@ -215,8 +258,8 @@ public class CountingActivity extends AppCompatActivity {
                 standings.putExtra("LeftThirdMatch", ThirdLeftMatch);
                 standings.putExtra("RightThirdMatch", ThirdRightMatch);
                 // Pass Total Won Bests
-                standings.putExtra("TotalLeftBestsTxt", LeftTotalWonBests);
-                standings.putExtra("TotalRightBestsTxt", RightTotalWonBests);
+                standings.putExtra("TotalLeftBests", LeftTotalWonBests);
+                standings.putExtra("TotalRightBests", RightTotalWonBests);
                 // Pass 1st Best Matches Scores
                 standings.putExtra("LeftFirstMatchFrB", FrBFirstLeftMatch);
                 standings.putExtra("RightFirstMatchFrB", FrBFirstRightMatch);
@@ -242,6 +285,14 @@ public class CountingActivity extends AppCompatActivity {
                 startActivity(standings);
             }
         });
+    }
+
+    // Wisemo Tool Bar inflater
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater wisemoMenuInflater = getMenuInflater();
+        wisemoMenuInflater.inflate(R.menu.wisemo_menu, menu);
+        return true;
     }
 
     // This Class is to call saved data in onSaveInstanceState for the screen orientation and popup view show
@@ -270,182 +321,324 @@ public class CountingActivity extends AppCompatActivity {
         // Increase score by 1 then display new score
         leftTeamScore = leftTeamScore + 1;
         displayForLeft(leftTeamScore);
-        // 3rd Best results
-        // If Left Scores final point ( WON ) then:
-        // Make Left is a Winner to the match and
-        // save the Right final score to the 1st Best match number then:
-        // reset the all recent Matches if the left won the 3rd Match in the 1st Best too " last case in the 1st if statement"
-        if (leftTeamScore == 3 & SecondLeftMatch == 3 | SecondRightMatch == 3 &
-                FirstLeftMatch == 3 | FirstRightMatch == 3 &
-                ThBSecondLeftMatch == 3 | ThBSecondRightMatch == 3 |
-                ThBFirstLeftMatch == 3 | ThBFirstRightMatch == 3) {
-            // Left Won the third recent Match
+/*
+//// This is the logic I want to see, but it is wrong as it is now for sure
+
+        // If Left Won 1st Best
+        if ((FrBFirstLeftMatch == 3 && FrBSecondLeftMatch == 3) ||
+                (FrBSecondLeftMatch == 3 && FrBThirdLeftMatch == 3) ||
+                (FrBFirstLeftMatch == 3 && FrBThirdLeftMatch == 3)){
+            // Increase total won bests by left
+            LeftTotalWonBests = LeftTotalWonBests + 1;
+            //Reset Left & Right scores to 0 then display both scores
+            leftTeamScore = 0;
+            rightTeamScore = 0;
+            displayForLeft(leftTeamScore);
+            displayForRight(rightTeamScore);
+            // Reset recent matches AND END THE COUNTING
+            FirstLeftMatch = 0;
+            FirstRightMatch = 0;
+            SecondLeftMatch = 0;
+            SecondRightMatch = 0;
+            ThirdLeftMatch = 0;
+            ThirdRightMatch = 0;
+            // Congratulations dialog toast
+            Toast.makeText(getApplicationContext(),
+                    "Congratulations!", Toast.LENGTH_SHORT)
+                    .show();
+        }
+        // If Left Won 2nd Best
+        else if ((SeBFirstLeftMatch == 3 && SeBSecondLeftMatch == 3) ||
+                (SeBSecondLeftMatch == 3 && SeBThirdLeftMatch == 3) ||
+                (SeBFirstLeftMatch == 3 && SeBThirdLeftMatch == 3)){
+            // Increase total won bests by left
+            LeftTotalWonBests = LeftTotalWonBests + 1;
+            //Reset Left & Right scores to 0 then display both scores
+            leftTeamScore = 0;
+            rightTeamScore = 0;
+            displayForLeft(leftTeamScore);
+            displayForRight(rightTeamScore);
+            // Reset recent matches AND END THE COUNTING
+            FirstLeftMatch = 0;
+            FirstRightMatch = 0;
+            SecondLeftMatch = 0;
+            SecondRightMatch = 0;
+            ThirdLeftMatch = 0;
+            ThirdRightMatch = 0;
+            // Congratulations dialog toast
+            Toast.makeText(getApplicationContext(),
+                    "Congratulations!", Toast.LENGTH_SHORT)
+                    .show();
+        }
+        // If Left Won 3rd Best
+        else if ((ThBFirstLeftMatch == 3 && ThBSecondLeftMatch == 3) ||
+                (ThBSecondLeftMatch == 3 && ThBThirdLeftMatch == 3 ) ||
+                (ThBFirstLeftMatch == 3 && ThBThirdLeftMatch == 3)) {
+            // Increase total won bests by left
+            LeftTotalWonBests = LeftTotalWonBests + 1;
+            //Reset Left & Right scores to 0 then display both scores
+            leftTeamScore = 0;
+            rightTeamScore = 0;
+            displayForLeft(leftTeamScore);
+            displayForRight(rightTeamScore);
+            // Reset recent matches AND END THE COUNTING
+            FirstLeftMatch = 0;
+            FirstRightMatch = 0;
+            SecondLeftMatch = 0;
+            SecondRightMatch = 0;
+            ThirdLeftMatch = 0;
+            ThirdRightMatch = 0;
+            // Congratulations dialog toast
+            Toast.makeText(getApplicationContext(),
+                    "Congratulations!", Toast.LENGTH_SHORT)
+                    .show();
+        }
+*/
+        // If Left won the 3rd best 3rd Match
+        if (((leftTeamScore == 3) &&
+                (FirstLeftMatch == 3 | FirstRightMatch == 3) &&
+                (SecondLeftMatch == 3 | SecondRightMatch == 3)) &&
+                (FrBFirstLeftMatch == 3 | FrBFirstRightMatch == 3) &&
+                (FrBSecondLeftMatch == 3 | FrBSecondRightMatch == 3) &&
+                (FrBThirdLeftMatch == 3 | FrBThirdRightMatch == 3) &&
+                (SeBFirstLeftMatch == 3 | SeBFirstRightMatch == 3) &&
+                (SeBSecondLeftMatch == 3 | SeBSecondRightMatch == 3) &&
+                (SeBThirdLeftMatch == 3 | SeBThirdRightMatch == 3) &&
+                (ThBFirstLeftMatch == 3 | ThBFirstRightMatch == 3) &&
+                (ThBSecondLeftMatch == 3 | ThBSecondRightMatch == 3)) {
+            // Left won 3rd Recent match
             ThirdLeftMatch = 3;
+            // Right 3rd Match score
             ThirdRightMatch = rightTeamScore;
-            // inflate a dialogue popup for left winning the 1st Best 3rd Match if YES then
-            ////////////////////////
-            // Left won the 1st Best 3rd Match
+            // Left is the Winner of 3rd Best 3rd Match
             ThBThirdLeftMatch = 3;
+            // Right 3rd Best 3rd Match
             ThBThirdRightMatch = rightTeamScore;
-            //Reset scores to 0 then display both scores
+            //Reset Left & Right scores to 0 then display both scores
             leftTeamScore = 0;
             rightTeamScore = 0;
             displayForLeft(leftTeamScore);
             displayForRight(rightTeamScore);
-            // Reset Recents Matches scores to Zero so the 2nd Best is count
+            // Reset recent matches AND END THE COUNTING
             FirstLeftMatch = 0;
             FirstRightMatch = 0;
             SecondLeftMatch = 0;
             SecondRightMatch = 0;
-            ThirdRightMatch = 0;
             ThirdLeftMatch = 0;
-        } else if (leftTeamScore == 3 & FirstLeftMatch == 3 || FirstRightMatch == 3 &
-                ThBFirstLeftMatch == 3 | ThBFirstRightMatch == 3) {
-            // Left Won the 2nd recent Match
+            ThirdRightMatch = 0;
+            // Congratulations dialog toast
+            Toast.makeText(getApplicationContext(),
+                    "Congratulations!", Toast.LENGTH_SHORT)
+                    .show();
+        }
+        // If Left Won the 3rd best 2nd Match
+        else if (((leftTeamScore == 3) &&
+                (FirstLeftMatch == 3 | FirstRightMatch == 3)) &&
+                (FrBFirstLeftMatch == 3 | FrBFirstRightMatch == 3) &&
+                (FrBSecondLeftMatch == 3 | FrBSecondRightMatch == 3) &&
+                (FrBThirdLeftMatch == 3 | FrBThirdRightMatch == 3) &&
+                (SeBFirstLeftMatch == 3 | SeBFirstRightMatch == 3) &&
+                (SeBSecondLeftMatch == 3 | SeBSecondRightMatch == 3) &&
+                (SeBThirdLeftMatch == 3 | SeBThirdRightMatch == 3)) {
+            // Left won 2nd Recent match
             SecondLeftMatch = 3;
+            // Right 2nd Match score
             SecondRightMatch = rightTeamScore;
-            // inflate a dialogue popup for left winning the 1st Best 2ndd Match if YES then
-            ////////////////////////
-            // Left won the 1st Best 2nd Match
+            // Left is the Winner of 3rd Best 2nd Match
             ThBSecondLeftMatch = 3;
+            // Right 3rd Best 2nd Match
             ThBSecondRightMatch = rightTeamScore;
-            //Reset scores to 0 then display both scores
+            //Reset Left & Right scores to 0 then display both scores
             leftTeamScore = 0;
             rightTeamScore = 0;
             displayForLeft(leftTeamScore);
             displayForRight(rightTeamScore);
-        } else if (leftTeamScore == 3) {
-            // Left Won the 1st recent Match
+            // Congratulations dialog toast
+            Toast.makeText(getApplicationContext(),
+                    "Congratulations!", Toast.LENGTH_SHORT)
+                    .show();
+        }
+        // If Left Won the 3rd best 1st Match
+        else if (((leftTeamScore == 3) &&
+                (FrBFirstLeftMatch == 3 | FrBFirstRightMatch == 3) &&
+                (FrBSecondLeftMatch == 3 | FrBSecondRightMatch == 3) &&
+                (FrBThirdLeftMatch == 3 | FrBThirdRightMatch == 3) &&
+                (SeBFirstLeftMatch == 3 | SeBFirstRightMatch == 3) &&
+                (SeBSecondLeftMatch == 3 | SeBSecondRightMatch == 3) &&
+                (SeBThirdLeftMatch == 3 | SeBThirdRightMatch == 3))) {
+            // Left won 1st Recent match
             FirstLeftMatch = 3;
+            // Right 1st Match score
             FirstRightMatch = rightTeamScore;
-            // inflate a dialogue popup for left winning the 1st Best 1st Match if YES then
-            ////////////////////////
-            // Left won the 1st Best 2nd Match
+            // Left is the Winner of 3rd Best 1st Match
             ThBFirstLeftMatch = 3;
+            // Right 3rd Best 1st Match score
             ThBFirstRightMatch = rightTeamScore;
-            //Reset scores to 0 then display both scores
+            //Reset Left & Right scores to 0 then display both scores
             leftTeamScore = 0;
             rightTeamScore = 0;
             displayForLeft(leftTeamScore);
             displayForRight(rightTeamScore);
+            // Congratulations dialog toast
+            Toast.makeText(getApplicationContext(),
+                    "Congratulations!", Toast.LENGTH_SHORT)
+                    .show();
         }
-        // 2nd Best results
-        // If Left Scores final point ( WON ) then:
-        // Make Left is a Winner to the match and
-        // save the Right final score to the 1st Best match number then:
-        // reset the all recent Matches if the left won the 3rd Match in the 1st Best too " last case in the 1st if statement"
-        else if (leftTeamScore == 3 & SecondLeftMatch == 3 | SecondRightMatch == 3 &
-                FirstLeftMatch == 3 | FirstRightMatch == 3 &
-                SeBSecondLeftMatch == 3 | SeBSecondRightMatch == 3 |
-                SeBFirstLeftMatch == 3 | SeBFirstRightMatch == 3) {
-            // Left Won the third recent Match
+        // If Left won the 2nd best 3rd Match
+        // When all 1st & 2nd recent Matches && 3rd Best 1st & 2nd Matches finished
+        else if (((leftTeamScore == 3) &&
+                (FirstLeftMatch == 3 | FirstRightMatch == 3) &&
+                (SecondLeftMatch == 3 | SecondRightMatch == 3)) &&
+                (FrBFirstLeftMatch == 3 | FrBFirstRightMatch == 3) &&
+                (FrBSecondLeftMatch == 3 | FrBSecondRightMatch == 3) &&
+                (FrBThirdLeftMatch == 3 | FrBThirdRightMatch == 3) &&
+                (SeBFirstLeftMatch == 3 | SeBFirstRightMatch == 3) &&
+                (SeBSecondLeftMatch == 3 | SeBSecondRightMatch == 3)) {
+            // Left won 3rd Recent match
             ThirdLeftMatch = 3;
+            // Right 3rd Match score
             ThirdRightMatch = rightTeamScore;
-            // inflate a dialogue popup for left winning the 1st Best 3rd Match if YES then
-            ////////////////////////
-            // Left won the 1st Best 3rd Match
+            // Left is the Winner of 2nd Best 3rd Match
             SeBThirdLeftMatch = 3;
+            // Right 2nd Best 3rd Match
             SeBThirdRightMatch = rightTeamScore;
-            //Reset scores to 0 then display both scores
+            //Reset Left & Right scores to 0 then display both scores
             leftTeamScore = 0;
             rightTeamScore = 0;
             displayForLeft(leftTeamScore);
             displayForRight(rightTeamScore);
-            // Reset Recents Matches scores to Zero so the 2nd Best is count
+            // Reset recent matches AND END THE COUNTING
             FirstLeftMatch = 0;
             FirstRightMatch = 0;
             SecondLeftMatch = 0;
             SecondRightMatch = 0;
-            ThirdRightMatch = 0;
             ThirdLeftMatch = 0;
-        } else if (leftTeamScore == 3 & FirstLeftMatch == 3 | FirstRightMatch == 3 &
-                SeBFirstLeftMatch == 3 | SeBFirstRightMatch == 3) {
-            // Left Won the 2nd recent Match
-            SecondLeftMatch = 3;
-            SecondRightMatch = rightTeamScore;
-            // inflate a dialogue popup for left winning the 1st Best 2ndd Match if YES then
-            ////////////////////////
-            // Left won the 1st Best 2nd Match
-            SeBSecondLeftMatch = 3;
-            SeBSecondRightMatch = rightTeamScore;
-            //Reset scores to 0 then display both scores
-            leftTeamScore = 0;
-            rightTeamScore = 0;
-            displayForLeft(leftTeamScore);
-            displayForRight(rightTeamScore);
-        } else if (leftTeamScore == 3) {
-            // Left Won the 1st recent Match
-            FirstLeftMatch = 3;
-            FirstRightMatch = rightTeamScore;
-            // inflate a dialogue popup for left winning the 1st Best 1st Match if YES then
-            ////////////////////////
-            // Left won the 1st Best 2nd Match
-            SeBFirstLeftMatch = 3;
-            SeBFirstRightMatch = rightTeamScore;
-            //Reset scores to 0 then display both scores
-            leftTeamScore = 0;
-            rightTeamScore = 0;
-            displayForLeft(leftTeamScore);
-            displayForRight(rightTeamScore);
+            ThirdRightMatch = 0;
+            // Congratulations dialog toast
+            Toast.makeText(getApplicationContext(),
+                    "Congratulations!", Toast.LENGTH_SHORT)
+                    .show();
         }
-        // 1st Best results
-        // If Left Scores final point ( WON ) then:
-        // Make Left is a Winner to the match and
-        // save the Right final score to the 1st Best match number then:
-        // reset the all recent Matches if the left won the 3rd Match in the 1st Best too " last case in the 1st if statement"
-        else if (leftTeamScore == 3 & SecondLeftMatch == 3 | SecondRightMatch == 3 &
-                FirstLeftMatch == 3 | FirstRightMatch == 3 &
-                FrBSecondLeftMatch == 3 | FrBSecondRightMatch == 3 |
-                FrBFirstLeftMatch == 3 | FrBFirstRightMatch == 3) {
-            // Left Won the third recent Match
-            ThirdLeftMatch = 3;
-            ThirdRightMatch = rightTeamScore;
-            // inflate a dialogue popup for left winning the 1st Best 3rd Match if YES then
-            ////////////////////////
-            // Left won the 1st Best 3rd Match
-            FrBThirdLeftMatch = 3;
-            FrBThirdRightMatch = rightTeamScore;
-            //Reset scores to 0 then display both scores
+        // If Left Won the 2nd best 2nd Match
+        else if (((leftTeamScore == 3) &&
+                (FirstLeftMatch == 3 | FirstRightMatch == 3)) &&
+                (FrBFirstLeftMatch == 3 | FrBFirstRightMatch == 3) &&
+                (FrBSecondLeftMatch == 3 | FrBSecondRightMatch == 3) &&
+                (FrBThirdLeftMatch == 3 | FrBThirdRightMatch == 3) &&
+                (SeBFirstLeftMatch == 3 | SeBFirstRightMatch == 3)) {
+            // Left won 2nd Recent match
+            SecondLeftMatch = 3;
+            // Right 2nd Match score
+            SecondRightMatch = rightTeamScore;
+            // Left is the Winner of 2nd Best 2nd Match
+            SeBSecondLeftMatch = 3;
+            // Right 2nd Best 2nd Match
+            SeBSecondRightMatch = rightTeamScore;
+            //Reset Left & Right scores to 0 then display both scores
             leftTeamScore = 0;
             rightTeamScore = 0;
             displayForLeft(leftTeamScore);
             displayForRight(rightTeamScore);
-            // Reset Recents Matches scores to Zero so the 2nd Best is count
+            // Congratulations dialog toast
+            Toast.makeText(getApplicationContext(),
+                    "Congratulations!", Toast.LENGTH_SHORT)
+                    .show();
+        }
+        // If Left Won the 2nd best 1st Match
+        else if (((leftTeamScore == 3) &&
+                (FrBFirstLeftMatch == 3 | FrBFirstRightMatch == 3) &&
+                (FrBSecondLeftMatch == 3 | FrBSecondRightMatch == 3) &&
+                (FrBThirdLeftMatch == 3 | FrBThirdRightMatch == 3))) {
+            // Left won 1st Recent match
+            FirstLeftMatch = 3;
+            // Right 1st Match score
+            FirstRightMatch = rightTeamScore;
+            // Left is the Winner of 2nd Best 1st Match
+            SeBFirstLeftMatch = 3;
+            // Right 2nd Best 1st Match score
+            SeBFirstRightMatch = rightTeamScore;
+            //Reset Left & Right scores to 0 then display both scores
+            leftTeamScore = 0;
+            rightTeamScore = 0;
+            displayForLeft(leftTeamScore);
+            displayForRight(rightTeamScore);
+            // Congratulations dialog toast
+            Toast.makeText(getApplicationContext(),
+                    "Congratulations!", Toast.LENGTH_SHORT)
+                    .show();
+        }
+        // If Left won the 1st best 3rd Match
+        else if (((leftTeamScore == 3) &&
+                (FirstLeftMatch == 3 | FirstRightMatch == 3) &&
+                (SecondLeftMatch == 3 | SecondRightMatch == 3)) &&
+                (FrBFirstLeftMatch == 3 | FrBFirstRightMatch == 3) &&
+                (FrBSecondLeftMatch == 3 | FrBSecondRightMatch == 3)) {
+            // Left won 3rd Recent match
+            ThirdLeftMatch = 3;
+            // Right 3rd Match score
+            ThirdRightMatch = rightTeamScore;
+            // Left is the Winner of 1st Best 3rd Match
+            FrBThirdLeftMatch = 3;
+            // Right 1st Best 3rd Match
+            FrBThirdRightMatch = rightTeamScore;
+            //Reset Left & Right scores to 0 then display both scores
+            leftTeamScore = 0;
+            rightTeamScore = 0;
+            displayForLeft(leftTeamScore);
+            displayForRight(rightTeamScore);
+            // Reset recent matches AND END THE COUNTING
             FirstLeftMatch = 0;
             FirstRightMatch = 0;
             SecondLeftMatch = 0;
             SecondRightMatch = 0;
-            ThirdRightMatch = 0;
             ThirdLeftMatch = 0;
-        } else if (leftTeamScore == 3 & FirstLeftMatch == 3 | FirstRightMatch == 3 &
-                FrBFirstLeftMatch == 3 | FrBFirstRightMatch == 3) {
-            // Left Won the 2nd recent Match
+            ThirdRightMatch = 0;
+            // Congratulations dialog toast
+            Toast.makeText(getApplicationContext(),
+                    "Congratulations!", Toast.LENGTH_SHORT)
+                    .show();
+        }
+        // If Left Won the 1st best 2nd Match
+        else if (((leftTeamScore == 3) &&
+                (FirstLeftMatch == 3 | FirstRightMatch == 3)) &&
+                (FrBFirstLeftMatch == 3 | FrBFirstRightMatch == 3)) {
+            // Left won 2nd Recent match
             SecondLeftMatch = 3;
+            // Right 2nd Match score
             SecondRightMatch = rightTeamScore;
-            // inflate a dialogue popup for left winning the 1st Best 2ndd Match if YES then
-            ////////////////////////
-            // Left won the 1st Best 2nd Match
+            // Left is the Winner of 1st Best 2nd Match
             FrBSecondLeftMatch = 3;
+            // Right 1st Best 2nd Match
             FrBSecondRightMatch = rightTeamScore;
-            //Reset scores to 0 then display both scores
+            //Reset Left & Right scores to 0 then display both scores
             leftTeamScore = 0;
             rightTeamScore = 0;
             displayForLeft(leftTeamScore);
             displayForRight(rightTeamScore);
-        } else if (leftTeamScore == 3) {
-            // Left Won the 1st recent Match
+            // Congratulations dialog toast
+            Toast.makeText(getApplicationContext(),
+                    "Congratulations!", Toast.LENGTH_SHORT)
+                    .show();
+        }
+        // If Left Won the 1st best 1st Match
+        else if (leftTeamScore == 3) {
+            // Left won 1st Recent match
             FirstLeftMatch = 3;
+            // Right 1st Match score
             FirstRightMatch = rightTeamScore;
-            // inflate a dialogue popup for left winning the 1st Best 1st Match if YES then
-            ////////////////////////
-            // Left won the 1st Best 2nd Match
+            // Left is the Winner of 1st Best 1st Match
             FrBFirstLeftMatch = 3;
+            // Right 1st Best 1st Match score
             FrBFirstRightMatch = rightTeamScore;
-            //Reset scores to 0 then display both scores
+            //Reset Left & Right scores to 0 then display both scores
             leftTeamScore = 0;
             rightTeamScore = 0;
             displayForLeft(leftTeamScore);
             displayForRight(rightTeamScore);
+            // Congratulations dialog toast
+            Toast.makeText(getApplicationContext(),
+                    "Congratulations!", Toast.LENGTH_SHORT)
+                    .show();
         }
     }
 
@@ -466,33 +659,252 @@ public class CountingActivity extends AppCompatActivity {
     public void incRightOne(View view) {
         rightTeamScore = rightTeamScore + 1;
         displayForRight(rightTeamScore);
-        // Change the right Matches variables to equals this match score as a Winner and store the Right score to this match
-        if (rightTeamScore == 3 && SecondLeftMatch == 3 | SecondRightMatch == 3 &&
-                FirstLeftMatch == 3 | FirstRightMatch == 3) {
+        // If Right won the 3rd best 3rd Match
+        if (((rightTeamScore == 3) &&
+                (FirstLeftMatch == 3 | FirstRightMatch == 3) &&
+                (SecondLeftMatch == 3 | SecondRightMatch == 3)) &&
+                (FrBFirstLeftMatch == 3 | FrBFirstRightMatch == 3) &&
+                (FrBSecondLeftMatch == 3 | FrBSecondRightMatch == 3) &&
+                (FrBThirdLeftMatch == 3 | FrBThirdRightMatch == 3) &&
+                (SeBFirstLeftMatch == 3 | SeBFirstRightMatch == 3) &&
+                (SeBSecondLeftMatch == 3 | SeBSecondRightMatch == 3) &&
+                (SeBThirdLeftMatch == 3 | SeBThirdRightMatch == 3) &&
+                (ThBFirstLeftMatch == 3 | ThBFirstRightMatch == 3) &&
+                (ThBSecondLeftMatch == 3 | ThBSecondRightMatch == 3)) {
+            // Right won 3rd Recent match
             ThirdRightMatch = 3;
+            // Left 3rd Match score
             ThirdLeftMatch = leftTeamScore;
-            //Reset scores to 0 then display both scores
+            // Right is the Winner of 3rd Best 3rd Match
+            ThBThirdRightMatch = 3;
+            // Left 3rd Best 3rd Match
+            ThBThirdLeftMatch = leftTeamScore;
+            //Reset Left & Right scores to 0 then display both scores
             leftTeamScore = 0;
             rightTeamScore = 0;
             displayForLeft(leftTeamScore);
             displayForRight(rightTeamScore);
-        } else if (rightTeamScore == 3 && FirstLeftMatch == 3 | FirstRightMatch == 3) {
-            SecondRightMatch = 3;
-            SecondLeftMatch = leftTeamScore;
-            //Reset scores to 0 then display both scores
-            leftTeamScore = 0;
-            rightTeamScore = 0;
-            displayForLeft(leftTeamScore);
-            displayForRight(rightTeamScore);
-        } else if (rightTeamScore == 3) {
-            FirstRightMatch = 3;
-            FirstLeftMatch = leftTeamScore;
-            //Reset scores to 0 then display both scores
-            leftTeamScore = 0;
-            rightTeamScore = 0;
-            displayForLeft(leftTeamScore);
-            displayForRight(rightTeamScore);
+            // Reset recent matches AND END THE COUNTING
+            FirstLeftMatch = 0;
+            FirstRightMatch = 0;
+            SecondLeftMatch = 0;
+            SecondRightMatch = 0;
+            ThirdLeftMatch = 0;
+            ThirdRightMatch = 0;
+            // Congratulations dialog toast
+            Toast.makeText(getApplicationContext(),
+                    "Congratulations!", Toast.LENGTH_SHORT)
+                    .show();
         }
+        // If Right Won the 3rd best 2nd Match
+        else if (((rightTeamScore == 3) &&
+                (FirstLeftMatch == 3 | FirstRightMatch == 3)) &&
+                (FrBFirstLeftMatch == 3 | FrBFirstRightMatch == 3) &&
+                (FrBSecondLeftMatch == 3 | FrBSecondRightMatch == 3) &&
+                (FrBThirdLeftMatch == 3 | FrBThirdRightMatch == 3) &&
+                (SeBFirstLeftMatch == 3 | SeBFirstRightMatch == 3) &&
+                (SeBSecondLeftMatch == 3 | SeBSecondRightMatch == 3) &&
+                (SeBThirdLeftMatch == 3 | SeBThirdRightMatch == 3)) {
+            // Right won 2nd Recent match
+            SecondRightMatch = 3;
+            // Left 2nd Match score
+            SecondLeftMatch = leftTeamScore;
+            // Right is the Winner of 3rd Best 2nd Match
+            ThBSecondRightMatch = 3;
+            // Left 3rd Best 2nd Match
+            ThBSecondLeftMatch = leftTeamScore;
+            //Reset Left & Right scores to 0 then display both scores
+            leftTeamScore = 0;
+            rightTeamScore = 0;
+            displayForLeft(leftTeamScore);
+            displayForRight(rightTeamScore);
+            // Congratulations dialog toast
+            Toast.makeText(getApplicationContext(),
+                    "Congratulations!", Toast.LENGTH_SHORT)
+                    .show();
+        }
+        // If Right Won the 3rd best 1st Match
+        else if (((rightTeamScore == 3) &&
+                (FrBFirstLeftMatch == 3 | FrBFirstRightMatch == 3) &&
+                (FrBSecondLeftMatch == 3 | FrBSecondRightMatch == 3) &&
+                (FrBThirdLeftMatch == 3 | FrBThirdRightMatch == 3) &&
+                (SeBFirstLeftMatch == 3 | SeBFirstRightMatch == 3) &&
+                (SeBSecondLeftMatch == 3 | SeBSecondRightMatch == 3) &&
+                (SeBThirdLeftMatch == 3 | SeBThirdRightMatch == 3))) {
+            // Right won 1st Recent match
+            FirstRightMatch = 3;
+            // Left 1st Match score
+            FirstLeftMatch = leftTeamScore;
+            // Right is the Winner of 3rd Best 1st Match
+            ThBFirstRightMatch = 3;
+            // Left 3rd Best 1st Match score
+            ThBFirstLeftMatch = leftTeamScore;
+            //Reset Left & Right scores to 0 then display both scores
+            leftTeamScore = 0;
+            rightTeamScore = 0;
+            displayForLeft(leftTeamScore);
+            displayForRight(rightTeamScore);
+            // Congratulations dialog toast
+            Toast.makeText(getApplicationContext(),
+                    "Congratulations!", Toast.LENGTH_SHORT)
+                    .show();
+        }
+        // If Right won the 2nd best 3rd Match
+        else if (((rightTeamScore == 3) &&
+                (FirstLeftMatch == 3 | FirstRightMatch == 3) &&
+                (SecondLeftMatch == 3 | SecondRightMatch == 3)) &&
+                (FrBFirstLeftMatch == 3 | FrBFirstRightMatch == 3) &&
+                (FrBSecondLeftMatch == 3 | FrBSecondRightMatch == 3) &&
+                (FrBThirdLeftMatch == 3 | FrBThirdRightMatch == 3) &&
+                (SeBFirstLeftMatch == 3 | SeBFirstRightMatch == 3) &&
+                (SeBSecondLeftMatch == 3 | SeBSecondRightMatch == 3)) {
+            // Right won 3rd Recent match
+            ThirdRightMatch = 3;
+            // Left 3rd Match score
+            ThirdLeftMatch = leftTeamScore;
+            // Right is the Winner of 2nd Best 3rd Match
+            SeBThirdRightMatch = 3;
+            // Left 2nd Best 3rd Match
+            SeBThirdLeftMatch = leftTeamScore;
+            //Reset Left & Right scores to 0 then display both scores
+            leftTeamScore = 0;
+            rightTeamScore = 0;
+            displayForLeft(leftTeamScore);
+            displayForRight(rightTeamScore);
+            // Reset recent matches AND END THE COUNTING
+            FirstLeftMatch = 0;
+            FirstRightMatch = 0;
+            SecondLeftMatch = 0;
+            SecondRightMatch = 0;
+            ThirdLeftMatch = 0;
+            ThirdRightMatch = 0;
+            // Congratulations dialog toast
+            Toast.makeText(getApplicationContext(),
+                    "Congratulations!", Toast.LENGTH_SHORT)
+                    .show();
+        }
+        // If Right Won the 2nd best 2nd Match
+        else if (((rightTeamScore == 3) &&
+                (FirstLeftMatch == 3 | FirstRightMatch == 3)) &&
+                (FrBFirstLeftMatch == 3 | FrBFirstRightMatch == 3) &&
+                (FrBSecondLeftMatch == 3 | FrBSecondRightMatch == 3) &&
+                (FrBThirdLeftMatch == 3 | FrBThirdRightMatch == 3) &&
+                (SeBFirstLeftMatch == 3 | SeBFirstRightMatch == 3)) {
+            // Right won 2nd Recent match
+            SecondRightMatch = 3;
+            // Left 2nd Match score
+            SecondLeftMatch = leftTeamScore;
+            // Right is the Winner of 2nd Best 2nd Match
+            SeBSecondRightMatch = 3;
+            // Left 2nd Best 2nd Match
+            SeBSecondLeftMatch = leftTeamScore;
+            //Reset Left & Right scores to 0 then display both scores
+            leftTeamScore = 0;
+            rightTeamScore = 0;
+            displayForLeft(leftTeamScore);
+            displayForRight(rightTeamScore);
+            // Congratulations dialog toast
+            Toast.makeText(getApplicationContext(),
+                    "Congratulations!", Toast.LENGTH_SHORT)
+                    .show();
+        }
+        // If Right Won the 2nd best 1st Match
+        else if (((rightTeamScore == 3) &&
+                (FrBFirstLeftMatch == 3 | FrBFirstRightMatch == 3) &&
+                (FrBSecondLeftMatch == 3 | FrBSecondRightMatch == 3) &&
+                (FrBThirdLeftMatch == 3 | FrBThirdRightMatch == 3))) {
+            // Right won 1st Recent match
+            FirstRightMatch = 3;
+            // Left 1st Match score
+            FirstLeftMatch = leftTeamScore;
+            // Right is the Winner of 2nd Best 1st Match
+            SeBFirstRightMatch = 3;
+            // Left 2nd Best 1st Match score
+            SeBFirstLeftMatch = leftTeamScore;
+            //Reset Left & Right scores to 0 then display both scores
+            leftTeamScore = 0;
+            rightTeamScore = 0;
+            displayForLeft(leftTeamScore);
+            displayForRight(rightTeamScore);
+            // Congratulations dialog toast
+            Toast.makeText(getApplicationContext(),
+                    "Congratulations!", Toast.LENGTH_SHORT)
+                    .show();
+        }
+        // If Right won the 1st best 3rd Match
+        else if (((rightTeamScore == 3) &&
+                (FirstLeftMatch == 3 | FirstRightMatch == 3) &&
+                (SecondLeftMatch == 3 | SecondRightMatch == 3)) &&
+                (FrBFirstLeftMatch == 3 | FrBFirstRightMatch == 3) &&
+                (FrBSecondLeftMatch == 3 | FrBSecondRightMatch == 3)) {
+            // Right won 3rd Recent match
+            ThirdRightMatch = 3;
+            // Left 3rd Match score
+            ThirdLeftMatch = leftTeamScore;
+            // Right is the Winner of 1st Best 3rd Match
+            FrBThirdRightMatch = 3;
+            // Left 1st Best 3rd Match
+            FrBThirdLeftMatch = leftTeamScore;
+            //Reset Left & Right scores to 0 then display both scores
+            leftTeamScore = 0;
+            rightTeamScore = 0;
+            displayForLeft(leftTeamScore);
+            displayForRight(rightTeamScore);
+            // Reset recent matches AND END THE COUNTING
+            FirstLeftMatch = 0;
+            FirstRightMatch = 0;
+            SecondLeftMatch = 0;
+            SecondRightMatch = 0;
+            ThirdLeftMatch = 0;
+            ThirdRightMatch = 0;
+            // Congratulations dialog toast
+            Toast.makeText(getApplicationContext(),
+                    "Congratulations! New Best To Count", Toast.LENGTH_SHORT)
+                    .show();
+        }
+        // If Right Won the 1st best 2nd Match
+        else if (((rightTeamScore == 3) &&
+                (FirstLeftMatch == 3 | FirstRightMatch == 3)) &&
+                (FrBFirstLeftMatch == 3 | FrBFirstRightMatch == 3)) {
+            // Right won 2nd Recent match
+            SecondRightMatch = 3;
+            // Left 2nd Match score
+            SecondLeftMatch = leftTeamScore;
+            // Right is the Winner of 1st Best 2nd Match
+            FrBSecondRightMatch = 3;
+            // Left 1st Best 2nd Match
+            FrBSecondLeftMatch = leftTeamScore;
+            //Reset Left & Right scores to 0 then display both scores
+            leftTeamScore = 0;
+            rightTeamScore = 0;
+            displayForLeft(leftTeamScore);
+            displayForRight(rightTeamScore);
+            // Congratulations dialog toast
+            Toast.makeText(getApplicationContext(),
+                    "Congratulations!", Toast.LENGTH_SHORT)
+                    .show();
+        }
+        // If Right Won the 1st best 1st Match
+        else if (rightTeamScore == 3) {
+            // Right won 1st Recent match
+            FirstRightMatch = 3;
+            // Left 1st Match score
+            FirstLeftMatch = leftTeamScore;
+            // Right is the Winner of 1st Best 1st Match
+            FrBFirstRightMatch = 3;
+            // Left 1st Best 1st Match score
+            FrBFirstLeftMatch = leftTeamScore;
+            //Reset Left & Right scores to 0 then display both scores
+            leftTeamScore = 0;
+            rightTeamScore = 0;
+            displayForLeft(leftTeamScore);
+            displayForRight(rightTeamScore);
+            // Congratulations dialog toast
+            Toast.makeText(getApplicationContext(),
+                    "Congratulations!", Toast.LENGTH_SHORT)
+                    .show();
+        }
+
     }
 
     // When the - for right player/team score is clicked

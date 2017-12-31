@@ -8,32 +8,28 @@
     android:orientation="horizontal"
     tools:context=".WelcomeSplashActivity">
     <LinearLayout
+        android:id="@+id/welcome_logo"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_gravity="center_vertical"
+        android:layout_gravity="center"
         android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical">
-        <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:contentDescription="@string/App_logo"
-            android:src="@drawable/ppssc_logo" />
-
         <TextView
             android:id="@+id/hashLink"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:drawablePadding="25dp"
+            android:drawableTop="@drawable/ppssc_logo"
             android:gravity="center"
             android:text="@string/WISEMO"
-            android:textColor="#ffffff" />
+            android:textColor="@color/White" />
     </LinearLayout>
-
     <LinearLayout
+        android:id="@+id/user_start"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
+        android:layout_gravity="center"
         android:layout_margin="16dp"
         android:layout_weight="1"
         android:gravity="center"
@@ -46,8 +42,8 @@
             android:gravity="center"
             android:text="@string/Enter_names_then_start"
             android:textAllCaps="true"
-            android:textColor="#ffffff"
-            android:textSize="21sp" />
+            android:textColor="@color/White"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/right_team_name"
@@ -80,6 +76,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
+            android:background="@drawable/red_round_bg"
             android:singleLine="true"
             android:text="@string/Start" />
     </LinearLayout>

@@ -1,10 +1,10 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Primary theme color of the app (sets background color of app bar) -->
-        <item name="colorPrimary">#FF9800</item>
+        <item name="colorPrimary">@color/White</item>
         <!-- Background color of buttons in the app -->
-        <item name="colorButtonNormal">#E5394A</item>
+        <item name="colorButtonNormal">@color/White</item>
     </style>
     <!-- Standing popup window style -->
     <style name="StandCustom" parent="Theme.AppCompat.NoActionBar">

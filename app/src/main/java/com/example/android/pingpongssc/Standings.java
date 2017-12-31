@@ -2,11 +2,8 @@ package com.example.android.pingpongssc;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
-
-/**
- * Created by wisemo on 12/21/2017.
- */
 
 public class Standings extends Activity {
     // Names TextViews Global Variables &
@@ -29,26 +26,29 @@ public class Standings extends Activity {
     LeftBestThreeMatchOne, RightBestThreeMatchOne,
             LeftBestThreeMatchTwo, RightBestThreeMatchTwo,
             LeftBestThreeMatchThree, RightBestThreeMatchThree;
+    Button swapBtn;
 
-    // Recent Best Matches Global Integer variables
-/*    int FirstLeftMatch, FirstRightMatch,
+    int // Recent Matches Global Integer variables
+            FirstLeftMatch, FirstRightMatch,
             SecondLeftMatch, SecondRightMatch,
             ThirdLeftMatch, ThirdRightMatch,
+    // Total Bests Won
+    LeftTotalWonBests, RightTotalWonBests,
     // First Best Matches Scores Integers Global Variables
-            FrBFirstLeftMatch, FrBFirstRightMatch,
+    FrBFirstLeftMatch, FrBFirstRightMatch,
             FrBSecondLeftMatch, FrBSecondRightMatch,
             FrBThirdLeftMatch, FrBThirdRightMatch,
     // Second Best Matches Scores Integers Global Variables
-            SeBFirstLeftMatch, SeBFirstRightMatch,
+    SeBFirstLeftMatch, SeBFirstRightMatch,
             SeBSecondLeftMatch, SeBSecondRightMatch,
             SeBThirdLeftMatch, SeBThirdRightMatch,
     // Third Best Matches Scores Integers Global Variables
-            ThBFirstLeftMatch, ThBFirstRightMatch,
+    ThBFirstLeftMatch, ThBFirstRightMatch,
             ThBSecondLeftMatch, ThBSecondRightMatch,
             ThBThirdLeftMatch, ThBThirdRightMatch;
-*/
+
     // This @Override saves current data on screen mobile rotation and showing standings popup view
-/*    @Override
+    @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         // Save Recent Matches scores in their keys
         savedInstanceState.putInt("leftMatchFirst", FirstLeftMatch);
@@ -81,12 +81,11 @@ public class Standings extends Activity {
         // Always call the superclass so it can save the view hierarchy state
         super.onSaveInstanceState(savedInstanceState);
     }
-*/
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.standings_popup);
-
         //Assigns textViews public variables to IDs in standings_popup.xml
         StandLeftName = findViewById(R.id.stand_left_team_name);
         //To be sure that the Name will scroll horizontally repetitively
@@ -127,7 +126,7 @@ public class Standings extends Activity {
         LeftBestThreeMatchThree = findViewById(R.id.left_best_three_third_txt);
         RightBestThreeMatchThree = findViewById(R.id.right_best_three_third_txt);
 
-        //Get passed data from UserInputNames class
+        //Get passed data from UserInputNames class & CountingActvity class
         Bundle bundle = getIntent().getExtras();
         //To import data from the 2 EditText in the activity_teams_names
         if (bundle != null) {
@@ -150,8 +149,8 @@ public class Standings extends Activity {
             LeftThirdMatchTxt.setText(String.valueOf(leftThird));
             RightThirdMatchTxt.setText(String.valueOf(rightThird));
             // Get passed Total Won Bests keys from CountingActivity
-            Integer totalLeftBests = bundle.getInt("TotalLeftBestsTxt");
-            Integer totalRightBests = bundle.getInt("TotalRightBestsTxt");
+            Integer totalLeftBests = bundle.getInt("TotalLeftBests");
+            Integer totalRightBests = bundle.getInt("TotalRightBests");
             // Put passed Total Won Bests values from keys came from CountingActivity
             TotalLeftBestsTxt.setText(String.valueOf(totalLeftBests));
             TotalRightBestsTxt.setText(String.valueOf(totalRightBests));
@@ -199,7 +198,6 @@ public class Standings extends Activity {
             RightBestThreeMatchThree.setText(String.valueOf(rightThBThree));
         }
     }
-/*
     // Public Class to call saved data in onSaveInstanceState
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         // Always call the superclass so it can restore the view while screen oriantation or Showing standings popup
@@ -233,5 +231,4 @@ public class Standings extends Activity {
         ThBThirdLeftMatch = savedInstanceState.getInt("leftThBMatchThird");
         ThBThirdRightMatch = savedInstanceState.getInt("leftThBMatchThird");
     }
-*/
 }

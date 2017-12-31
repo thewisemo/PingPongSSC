@@ -1,10 +1,22 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_relative_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_vertical"
     tools:context=".WelcomeSplashActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/wisemoToolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/White"
+        android:minHeight="?attr/actionBarSize"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -182,7 +194,7 @@
         android:textStyle="bold" />
     <!-- Swap Button -->
     <Button
-        android:id="@+id/swapBtn"
+        android:id="@+id/swapNamesBtn"
         android:layout_width="60dp"
         android:layout_height="50dp"
         android:layout_above="@+id/reset"

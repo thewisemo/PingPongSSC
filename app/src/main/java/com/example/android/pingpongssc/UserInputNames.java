@@ -4,13 +4,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 public class UserInputNames extends AppCompatActivity {
 
     EditText UserInputRightName, UserInputLeftName;
+    LinearLayout logo, start;
+    Animation upToDown, downToUp;
 
 
     @Override
@@ -20,6 +25,13 @@ public class UserInputNames extends AppCompatActivity {
 
         UserInputRightName = findViewById(R.id.right_team_name);
         UserInputLeftName = findViewById(R.id.left_team_name);
+
+        logo = findViewById(R.id.welcome_logo);
+        start = findViewById(R.id.user_start);
+        upToDown = AnimationUtils.loadAnimation(this, R.anim.uptodown);
+        downToUp = AnimationUtils.loadAnimation(this, R.anim.downtoup);
+        logo.setAnimation(upToDown);
+        start.setAnimation(downToUp);
 
         // To Save user teams names and casting them to the score counter activity which is CountingActivity now
         // Start Button
