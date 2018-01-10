@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Primary theme color of the app (sets background color of app bar) -->
-        <item name="colorPrimary">@color/White</item>
+        <item name="colorPrimary">@color/Red</item>
         <!-- Background color of buttons in the app -->
         <item name="colorButtonNormal">@color/White</item>
     </style>

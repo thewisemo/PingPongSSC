@@ -22,14 +22,16 @@ public class UserInputNames extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teams_names);
-
+        // Assigns the EditText objects to their places in the layout
         UserInputRightName = findViewById(R.id.right_team_name);
         UserInputLeftName = findViewById(R.id.left_team_name);
-
+        // The Linear views to be animated
         logo = findViewById(R.id.welcome_logo);
         start = findViewById(R.id.user_start);
+        // Load animations from anim floder in resources
         upToDown = AnimationUtils.loadAnimation(this, R.anim.uptodown);
         downToUp = AnimationUtils.loadAnimation(this, R.anim.downtoup);
+        // Assign animation to each view
         logo.setAnimation(upToDown);
         start.setAnimation(downToUp);
 

@@ -280,29 +280,9 @@ public class CountingActivity extends AppCompatActivity {
     }
 
     ////////////////////////////////////////////////////////////////
-    @Override
-    public void onContentChanged() {
-        if ((FrBFirstLeftMatch == 3 && FrBSecondLeftMatch == 3) ||
-                (FrBSecondLeftMatch == 3 & FrBThirdLeftMatch == 3) ||
-                (FrBFirstLeftMatch == 3 && FrBThirdLeftMatch == 3)) {
-            LeftTotalWonBests = LeftTotalWonBests + 1;
-            FirstLeftMatch = 0;
-            FirstRightMatch = 0;
-            SecondLeftMatch = 0;
-            SecondRightMatch = 0;
-            ThirdLeftMatch = 0;
-            ThirdRightMatch = 0;
-        } else if ((SeBFirstLeftMatch == 3 && SeBSecondLeftMatch == 3) ||
-                (SeBSecondLeftMatch == 3 && SeBThirdLeftMatch == 3) ||
-                (SeBFirstLeftMatch == 3 && SeBThirdLeftMatch == 3)) {
-            LeftTotalWonBests = LeftTotalWonBests + 1;
-            FirstLeftMatch = 0;
-            FirstRightMatch = 0;
-            SecondLeftMatch = 0;
-            SecondRightMatch = 0;
-            ThirdLeftMatch = 0;
-            ThirdRightMatch = 0;
-        }
+    public final int incrementAndGet() {
+
+        return 0;
     }
 ////////////////////////////////////////////////////////////////
 
