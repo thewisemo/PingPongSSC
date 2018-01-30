@@ -71,14 +71,14 @@
                 android:orientation="vertical">
                 <!-- Left Increment Button -->
                 <ImageButton
+                    android:id="@+id/incLeftOne"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:layout_gravity="center"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="6dp"
                     android:background="@drawable/inc_layer_list"
-                    android:contentDescription="@string/increment"
-                    android:onClick="incLeftOne" />
+                    android:contentDescription="@string/increment" />
                 <!-- Left Decrement Button -->
                 <ImageButton
                     android:layout_width="60dp"
