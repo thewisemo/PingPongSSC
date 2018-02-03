@@ -77,43 +77,10 @@ public class CountingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // Scores Array
-        final ArrayList<MatchScore> scores = new ArrayList<>(18);
+        final ArrayList<GameScore> scores = new ArrayList<>(18);
         // Index 1
-        scores.add(new MatchScore(FrBFirstLeftMatch));
-        // Index 2
-        scores.add(new MatchScore(FrBFirstRightMatch));
-        // Index 3
-        scores.add(new MatchScore(FrBSecondLeftMatch));
-        // Index 4
-        scores.add(new MatchScore(FrBSecondRightMatch));
-        // Index 5
-        scores.add(new MatchScore(FrBThirdLeftMatch));
-        // Index 6
-        scores.add(new MatchScore(FrBThirdRightMatch));
-        // Index 7
-        scores.add(new MatchScore(SeBFirstLeftMatch));
-        // Index 8
-        scores.add(new MatchScore(SeBFirstRightMatch));
-        // Index 9
-        scores.add(new MatchScore(SeBSecondLeftMatch));
-        // Index 10
-        scores.add(new MatchScore(SeBSecondRightMatch));
-        // Index 11
-        scores.add(new MatchScore(SeBThirdLeftMatch));
-        // Index 12
-        scores.add(new MatchScore(SeBThirdRightMatch));
-        // Index 13
-        scores.add(new MatchScore(ThBFirstLeftMatch));
-        // Index 14
-        scores.add(new MatchScore(ThBFirstRightMatch));
-        // Index 15
-        scores.add(new MatchScore(ThBSecondLeftMatch));
-        // Index 16
-        scores.add(new MatchScore(ThBSecondRightMatch));
-        // Index 17
-        scores.add(new MatchScore(ThBThirdLeftMatch));
-        // Index 18
-        scores.add(new MatchScore(ThBThirdRightMatch));
+//
+//        scores.add(new GameScore(ThBThirdRightMatch));
         // ToolBar menu
         Toolbar moToolBar = findViewById(R.id.ToolBar);
         setSupportActionBar(moToolBar);
@@ -285,14 +252,9 @@ public class CountingActivity extends AppCompatActivity {
         incLeftOneBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                leftScore = leftScore + 1;
-                for (int index = 0; leftScore < winingScore; index++) {
-                    MatchScore leftMatchScore = new MatchScore(FrBFirstLeftMatch);
-                    leftMatchScore.setScore(index);
-                    displayForLeft(leftScore);
 
                 }
-            }
+
         });
     }
     //ToolBar inflater
